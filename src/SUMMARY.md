@@ -31,3 +31,5 @@
 - [13. 各领域入门 | How to Learn](learning/intro.md)
 - [⭐ 14. 学海计划 | Patchouli Project](learning/patchouli.md)
 - [15. 计算机科学简入门指南 | Computer Science Guide](learning/cs-guide.md)
+
+- [16.测试内容](./ceri.md)
