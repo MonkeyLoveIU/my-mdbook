@@ -19,6 +19,9 @@
 
 # 生活碎笔 | Life Traveling
 
+---
+
+
 - [⭐ 7. 文章与写作 | Literature](literature/README.md)
   - [8. 随笔随记 | Essays](literature/essays.md)
   - [9. 诗词 | Poems](literature/poems.md)
@@ -28,8 +31,22 @@
 
 # 学习与进步 | Learning and Progressing
 
+---
+
 - [13. 各领域入门 | How to Learn](learning/intro.md)
 - [⭐ 14. 学海计划 | Patchouli Project](learning/patchouli.md)
 - [15. 计算机科学简入门指南 | Computer Science Guide](learning/cs-guide.md)
 
 - [16.测试内容](./ceri.md)
+
+# 写作与部署 | Writing and Deployment
+
+---
+
+- [mdBook](./technique/mdbook.md)
+  - [mdbook部署流程 | Deployment Process](./technique/mdbookDeployment%20Process.md)
+  - [mdbook基础结构和 Markdown 编写语法大全](./technique/grammatical%20structure.md)
+  - [mdbook写作](./technique/write.md)
+  - [mdbook，github仓库同步](./technique/github.md)
+  - [Git安装](./technique/git.md)
+  - [SSH推送](./technique/ssh.md)
