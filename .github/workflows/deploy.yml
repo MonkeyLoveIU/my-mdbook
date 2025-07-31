@@ -29,6 +29,17 @@ jobs:
           curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf -y | sh
           rustup update
           cargo install mdbook
+
+    - name: Set up Python
+  uses: actions/setup-python@v4
+  with:
+    python-version: '3.x'
+
+- name: Insert timestamps into markdown files
+  run: python insert_timestamp.py
+
+
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
