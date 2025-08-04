@@ -1,0 +1,680 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>数学公式插件 - 朕 的 回 忆 录</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">朕 的 回 忆 录</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<hr />
+<h2 id="-全流程在-mdbook-中启用数学公式katex-支持"><a class="header" href="#-全流程在-mdbook-中启用数学公式katex-支持">🧭 全流程：在 mdBook 中启用数学公式（KaTeX 支持）</a></h2>
+<h3 id="前提你要使用的方法是官方推荐的-mdbook-katex-插件"><a class="header" href="#前提你要使用的方法是官方推荐的-mdbook-katex-插件">📍前提：你要使用的方法是「官方推荐的 <code>mdbook-katex</code> 插件」</a></h3>
+<hr />
+<h3 id="-第一步确认是否安装了-rustmdbook-是-rust-项目"><a class="header" href="#-第一步确认是否安装了-rustmdbook-是-rust-项目">✅ 第一步：确认是否安装了 Rust（mdbook 是 Rust 项目）</a></h3>
+<p>在终端中运行：</p>
+<pre><code class="language-bash">rustc --version
+</code></pre>
+<p>如果提示 <code>command not found</code> 或不是版本号，说明你还没装 Rust。</p>
+<h4 id="-没装那就执行这条命令安装-rust"><a class="header" href="#-没装那就执行这条命令安装-rust">➕ 没装？那就执行这条命令安装 Rust：</a></h4>
+<p>这个提示说明：<strong>你的系统中还没有安装 Rust</strong>，或者安装了但没有添加到环境变量中。</p>
+<hr />
+<h2 id="-你需要先安装-rust-才能使用-mdbook-katex-插件"><a class="header" href="#-你需要先安装-rust-才能使用-mdbook-katex-插件">✅ 你需要先安装 Rust 才能使用 <code>mdbook-katex</code> 插件</a></h2>
+<p>mdBook 是用 Rust 编写的工具，它的插件（例如 <code>mdbook-katex</code>）也都是通过 Rust 的构建工具 <code>cargo</code> 来安装的。所以我们第一步要做的就是：</p>
+<hr />
+<h3 id="-一步安装-rust包括-cargo-和-rustc"><a class="header" href="#-一步安装-rust包括-cargo-和-rustc">✅ 一步安装 Rust（包括 cargo 和 rustc）：</a></h3>
+<p>请在 PowerShell 中复制并运行以下命令：</p>
+<pre><code class="language-powershell">Invoke-WebRequest -Uri https://win.rustup.rs -OutFile rustup-init.exe; Start-Process .\rustup-init.exe
+</code></pre>
+<blockquote>
+<p>这是官方提供的 Rust 安装器，会弹出一个安装界面，默认选项一般就可以。</p>
+</blockquote>
+<hr />
+<p>Rust 安装程序在 Windows 上的一个提示，意思是：</p>
+<blockquote>
+<p>Rust 编译器需要一些 Windows 系统组件（比如链接器、API 头文件），而你的系统目前没有这些。</p>
+</blockquote>
+<p>这是正常的，<strong>在 Windows 上安装 Rust 时，必须配合安装 C++ 构建工具（来自 Visual Studio）</strong> 才能正常使用。</p>
+<hr />
+<h2 id="-推荐选择输入-1-然后回车自动下载安装"><a class="header" href="#-推荐选择输入-1-然后回车自动下载安装">✅ 推荐选择：<strong>输入 <code>1</code> 然后回车</strong>（自动下载安装）</a></h2>
+<p>这是最简单的方式，会帮你：</p>
+<ul>
+<li>安装 <strong>Visual Studio 的最小依赖版本</strong></li>
+<li>包含 Rust 构建所需的 C++ 工具链（如 <code>link.exe</code>, <code>cl.exe</code>）</li>
+</ul>
+<p>输入：</p>
+<pre><code class="language-text">1
+</code></pre>
+<p>然后回车。</p>
+<p>它会启动 <strong>Visual Studio Installer</strong> 并自动下载“C++构建工具”，这对 mdBook 插件（如 <code>mdbook-katex</code>）安装是必要的。</p>
+<hr />
+<h3 id="-选项解释供你参考"><a class="header" href="#-选项解释供你参考">🧭 选项解释（供你参考）：</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>选项</th><th>说明</th><th>是否推荐</th></tr></thead><tbody>
+<tr><td>1</td><td>自动安装 Visual Studio C++ 编译组件（推荐）</td><td>✅ 推荐</td></tr>
+<tr><td>2</td><td>手动安装依赖，适合高级用户</td><td>❌ 新手不建议</td></tr>
+<tr><td>3</td><td>不安装，仅限特殊情况（如目标是 GNU ABI）</td><td>❌ 一般不要选</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h3 id="-下载时间说明"><a class="header" href="#-下载时间说明">⏳ 下载时间说明：</a></h3>
+<ul>
+<li>这个安装包是 Visual Studio C++ 编译环境的一部分（通常在 500MB 左右）。</li>
+<li>过程可能需要 5~15 分钟，取决于你的网络。</li>
+</ul>
+<p>安装完成后重新打开终端，就可以运行：</p>
+<pre><code class="language-bash">cargo install mdbook-katex
+</code></pre>
+<hr />
+<p>如果你在安装过程中遇到任何问题（比如下载失败、权限不足），告诉我，我可以帮你处理或给出手动安装的方法。完成后我们就可以继续构建支持数学公式的 mdBook！</p>
+<h3 id="-安装完成后"><a class="header" href="#-安装完成后">🧭 安装完成后：</a></h3>
+<ol>
+<li>
+<p><strong>重启 PowerShell 或终端</strong>（非常重要！）让环境变量生效。</p>
+</li>
+<li>
+<p>验证安装是否成功：</p>
+<pre><code class="language-bash">rustc --version
+cargo --version
+</code></pre>
+<p>如果看到版本号，比如：</p>
+<pre><code class="language-bash">rustc 1.75.0
+cargo 1.75.0
+</code></pre>
+<p>就说明你已经成功安装 Rust ✅</p>
+</li>
+</ol>
+<hr />
+<h3 id="-接下来你就可以继续"><a class="header" href="#-接下来你就可以继续">🧱 接下来你就可以继续：</a></h3>
+<pre><code class="language-bash">cargo install mdbook-katex
+</code></pre>
+<p>然后编辑 <code>book.toml</code>，插入公式，构建项目，一步步启用公式支持。</p>
+<hr />
+<h1 id="2-rust-环境手动安装适用于-windows--macos--linux"><a class="header" href="#2-rust-环境手动安装适用于-windows--macos--linux">2. Rust 环境手动安装（适用于 Windows / macOS / Linux）</a></h1>
+<h2 id="-第-1-步安装-rust-工具链"><a class="header" href="#-第-1-步安装-rust-工具链">📌 第 1 步：安装 Rust 工具链</a></h2>
+<p>Rust 官方提供了一个安装工具 <code>rustup</code>，它会自动安装好以下内容：</p>
+<ul>
+<li><code>rustc</code>：Rust 编译器</li>
+<li><code>cargo</code>：Rust 构建工具和包管理器</li>
+<li><code>rustup</code>：版本管理器</li>
+</ul>
+<hr />
+<h2 id="-一windows-安装"><a class="header" href="#-一windows-安装">💻 一、Windows 安装</a></h2>
+<h3 id="-方法一使用官方安装器推荐"><a class="header" href="#-方法一使用官方安装器推荐">✅ 方法一：使用官方安装器（推荐）</a></h3>
+<ol>
+<li>打开官网 <a href="https://www.rust-lang.org/">https://rust-lang.org</a></li>
+<li>点击 “Get Started”</li>
+<li>下载 <code>rustup-init.exe</code> 安装器并运行</li>
+<li>会弹出命令行窗口，输入 <code>1</code> 开始默认安装（或直接回车）</li>
+</ol>
+<p>📦 安装完成后，关闭窗口，重新打开 <strong>PowerShell 或 CMD</strong>，输入：</p>
+<pre><code class="language-bash">rustc --version
+cargo --version
+</code></pre>
+<p>✅ 出现版本号说明安装成功。</p>
+<hr />
+<h3 id="-方法二使用命令行安装"><a class="header" href="#-方法二使用命令行安装">✅ 方法二：使用命令行安装</a></h3>
+<p>如果你喜欢命令行操作：</p>
+<ol>
+<li>打开 PowerShell 或 CMD</li>
+<li>输入以下命令：</li>
+</ol>
+<pre><code class="language-bash">curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+</code></pre>
+<ol start="3">
+<li>跟随提示按 Enter 回车安装即可。</li>
+</ol>
+<hr />
+<h2 id="-二macos-安装"><a class="header" href="#-二macos-安装">🍎 二、macOS 安装</a></h2>
+<h3 id="-使用-homebrew推荐"><a class="header" href="#-使用-homebrew推荐">✅ 使用 Homebrew（推荐）</a></h3>
+<p>打开终端，输入：</p>
+<pre><code class="language-bash">brew install rustup-init
+rustup-init
+</code></pre>
+<p>按提示安装即可。完成后重启终端，检查版本：</p>
+<pre><code class="language-bash">rustc --version
+cargo --version
+</code></pre>
+<hr />
+<h2 id="-三linux-安装"><a class="header" href="#-三linux-安装">🐧 三、Linux 安装</a></h2>
+<h3 id="-通用安装命令"><a class="header" href="#-通用安装命令">✅ 通用安装命令：</a></h3>
+<pre><code class="language-bash">curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+</code></pre>
+<hr />
+<p>提示：</p>
+<pre><code class="language-bash">Rust requires a linker and Windows API libraries but they don't seem to be
+available.
+ 
+These components can be acquired through a Visual Studio installer. 
+ 
+1) Quick install via the Visual Studio Community installer 
+   (free for individuals, academic uses, and open source). 
+ 
+2) Manually install the prerequisites 
+   (for enterprise and advanced users). 
+ 
+3) Don't install the prerequisites 
+   (if you're targeting the GNU ABI). 
+
+</code></pre>
+<p>这个提示是 Rust 编译器找不到 <strong>链接器（linker）</strong>，也就是说编译 Rust 代码时，需要用到的 Windows 系统底层工具没安装好。具体原因和解决方案如下：</p>
+<hr />
+<h2 id="❶-产生原因"><a class="header" href="#❶-产生原因">❶ 产生原因</a></h2>
+<ul>
+<li>Rust 编译器需要调用微软的 C++ 编译工具链（MSVC），包括链接器 <code>link.exe</code>。</li>
+<li>你的系统没安装 Visual Studio 相关的 <strong>C++ 构建工具</strong>，或者没安装 Windows SDK。</li>
+<li>如果你用的是 <strong>MSVC 版本的 Rust</strong>（默认），就必须安装微软提供的工具链。</li>
+</ul>
+<hr />
+<h2 id="❷-解决方案"><a class="header" href="#❷-解决方案">❷ 解决方案</a></h2>
+<h3 id="方法一安装-visual-studio-的c桌面开发工作负载"><a class="header" href="#方法一安装-visual-studio-的c桌面开发工作负载">方法一：安装 Visual Studio 的“C++桌面开发”工作负载</a></h3>
+<ol>
+<li>
+<p>如果没装 Visual Studio，可以从官网免费安装：</p>
+<p><a href="https://visualstudio.microsoft.com/zh-hans/downloads/">https://visualstudio.microsoft.com/zh-hans/downloads/</a></p>
+<p>选择 <strong>Visual Studio Community 2022</strong>。</p>
+</li>
+<li>
+<p>运行安装程序，选择以下工作负载（Workloads）：</p>
+<ul>
+<li>“使用 C++ 的桌面开发” (Desktop development with C++)</li>
+</ul>
+</li>
+<li>
+<p>安装完成后，Rust 就能找到必要的链接器。</p>
+</li>
+</ol>
+<hr />
+<h3 id="方法二只安装构建工具build-tools-for-visual-studio"><a class="header" href="#方法二只安装构建工具build-tools-for-visual-studio">方法二：只安装“构建工具”（Build Tools for Visual Studio）</a></h3>
+<p>如果你不想安装完整的 VS IDE，只需安装：</p>
+<p><a href="https://aka.ms/buildtools">https://aka.ms/buildtools</a></p>
+<p>安装时勾选：</p>
+<ul>
+<li>C++ build tools</li>
+<li>Windows 10 SDK（或你系统对应版本的 SDK）</li>
+</ul>
+<hr />
+<h3 id="方法三安装-mingw-w64-并切换-rust-到-gnu-abi"><a class="header" href="#方法三安装-mingw-w64-并切换-rust-到-gnu-abi">方法三：安装 <code>mingw-w64</code> 并切换 Rust 到 GNU ABI</a></h3>
+<p>这是另一种方案，但较少用。除非你熟悉 GNU 工具链，否则建议前两种。</p>
+<hr />
+<h2 id="❸-如何验证"><a class="header" href="#❸-如何验证">❸ 如何验证</a></h2>
+<p>安装好 Visual Studio 的 C++ 工具后， 打开Rust安装，重新打开终端，执行：</p>
+<pre><code class="language-bash">
+
+
+
+The Cargo home directory is located at:
+ 
+  C:\Users\lenovo\.cargo 
+ 
+This can be modified with the CARGO_HOME environment variable. 
+ 
+The cargo, rustc, rustup and other commands will be added to 
+Cargo's bin directory, located at: 
+ 
+  C:\Users\lenovo\.cargo\bin 
+ 
+This path will then be added to your PATH environment variable by 
+modifying the PATH registry key at HKEY_CURRENT_USER\Environment. 
+ 
+You can uninstall at any time with rustup self uninstall and
+these changes will be reverted.
+ 
+Current installation options: 
+ 
+ 
+   default host triple: x86_64-pc-windows-msvc 
+     default toolchain: stable (default) 
+               profile: default 
+  modify PATH variable: yes 
+ 
+1) Proceed with standard installation (default - just press enter) 
+2) Customize installation 
+3) Cancel installation 
+&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Microsoft Windows [版本 10.0.26100.4652]
+(c) Microsoft Corporation。保留所有权利。
+
+C:\Users\lenovo&gt;cargo --version
+cargo 1.88.0 (873a06493 2025-05-10)
+
+C:\Users\lenovo&gt;rustc --version
+rustc 1.88.0 (6b00bc388 2025-06-23)
+
+C:\Users\lenovo&gt;D:
+
+D:\&gt;cd \mdbook
+
+D:\mdbook&gt;cargo install mdbook-katex
+</code></pre>
+<p>太好了！你现在已经运行到了 Rust 安装器的关键界面 ✅
+只需要做一件事：</p>
+<hr />
+<h2 id="-直接按下-enter-键选择默认的第-1-项"><a class="header" href="#-直接按下-enter-键选择默认的第-1-项">✅ <strong>直接按下 <code>Enter</code> 键</strong>（选择默认的第 1 项）</a></h2>
+<p>也就是：</p>
+<pre><code>1) Proceed with standard installation (default - just press enter)
+</code></pre>
+<p><strong>不要输入数字</strong>，直接敲 <strong>Enter</strong>，Rust 就会开始自动安装。</p>
+<hr />
+<h2 id="-安装说明解读一下你看到的内容"><a class="header" href="#-安装说明解读一下你看到的内容">🧠 安装说明解读一下你看到的内容：</a></h2>
+<ul>
+<li>
+<p>✅ Rust 将安装到：</p>
+<pre><code>C:\Users\lenovo\.cargo
+</code></pre>
+</li>
+<li>
+<p>✅ 所有命令（如 <code>cargo</code>, <code>rustc</code>）都会放在：</p>
+<pre><code>C:\Users\lenovo\.cargo\bin
+</code></pre>
+</li>
+<li>
+<p>✅ 安装器会自动将这个路径加到你的系统环境变量 <code>PATH</code> 中（你无需手动操作）</p>
+</li>
+</ul>
+<hr />
+<h2 id="-安装完成后-1"><a class="header" href="#-安装完成后-1">⏳ 安装完成后</a></h2>
+<p>等待安装完成，大概需要几分钟（视网速而定），然后你会看到如下提示：</p>
+<pre><code>Rust is installed now. Great!
+
+To get started you may need to restart your shell.
+</code></pre>
+<hr />
+<h2 id="-最后验证关键"><a class="header" href="#-最后验证关键">✅ 最后验证（关键）</a></h2>
+<p>关闭当前窗口，<strong>重新打开 CMD 或 PowerShell</strong>，然后输入：</p>
+<pre><code class="language-bash">cargo --version
+rustc --version
+</code></pre>
+<p>如果出现类似输出：</p>
+<pre><code>cargo 1.78.0
+rustc 1.78.0
+</code></pre>
+<p>就表示一切配置完成，可以使用 Rust 和 mdBook 了！</p>
+<hr />
+<p>下一步你可以继续：</p>
+<pre><code class="language-bash">cargo install mdbook
+cargo install mdbook-katex
+</code></pre>
+<p>要我帮你一起执行、解释后续 mdBook 配置吗？也可以一步步教你写数学公式的 md 文件。只要你说。</p>
+<hr />
+<h2 id="额外建议"><a class="header" href="#额外建议">额外建议</a></h2>
+<ul>
+<li>安装 VS 或构建工具时，最好关闭杀毒软件，避免安装中断。</li>
+<li>Rust 默认使用 MSVC 工具链，只要安装对应工具，Rust 就可以正常编译。</li>
+<li>你也可以用 VS Code 打开 Rust 项目，<code>rust-analyzer</code> 会提示你缺少构建工具。</li>
+</ul>
+<hr />
+<p>太好了，我们现在正式进入你关心的核心内容：</p>
+<hr />
+<h1 id="-配置-mdbook-并支持数学公式katex"><a class="header" href="#-配置-mdbook-并支持数学公式katex">🦀 配置 mdBook 并支持数学公式（KaTeX）</a></h1>
+<p>我们一起来执行、配置，并解释每一步。</p>
+<hr />
+<h2 id="-第-1-步安装-mdbook"><a class="header" href="#-第-1-步安装-mdbook">✅ 第 1 步：安装 <code>mdBook</code></a></h2>
+<h3 id="在-cmd-或-powershell-中输入"><a class="header" href="#在-cmd-或-powershell-中输入">在 CMD 或 PowerShell 中输入：</a></h3>
+<pre><code class="language-bash">cargo install mdbook
+</code></pre>
+<p>🔧 这会安装 <code>mdbook</code> 命令，等它显示：</p>
+<pre><code>Installing mdbook v0.x.x
+...
+Finished release [optimized] target(s)
+</code></pre>
+<p>然后检查是否安装成功：</p>
+<pre><code class="language-bash">mdbook --version
+</code></pre>
+<p>✅ 有版本号输出表示安装成功。</p>
+<hr />
+<h2 id="-第-2-步创建一个-mdbook-项目"><a class="header" href="#-第-2-步创建一个-mdbook-项目">✅ 第 2 步：创建一个 mdBook 项目</a></h2>
+<p>你可以先建个新目录：</p>
+<pre><code class="language-bash">mdbook init my-math-book
+cd my-math-book
+</code></pre>
+<p>然后运行：</p>
+<pre><code class="language-bash">mdbook serve
+</code></pre>
+<p>浏览器会打开：<a href="http://localhost:3000">http://localhost:3000</a>
+看到 mdBook 页面，表示基本框架已成功！</p>
+<hr />
+<h2 id="-第-3-步安装数学公式支持插件-mdbook-katex"><a class="header" href="#-第-3-步安装数学公式支持插件-mdbook-katex">✅ 第 3 步：安装数学公式支持插件 <code>mdbook-katex</code></a></h2>
+<pre><code class="language-bash">cargo install mdbook-katex
+</code></pre>
+<p>这是让你能用 <code>$E=mc^2$</code> 或 <code>$$公式$$</code> 来写数学公式的关键。</p>
+<hr />
+<h2 id="-第-4-步配置-booktoml"><a class="header" href="#-第-4-步配置-booktoml">✅ 第 4 步：配置 <code>book.toml</code></a></h2>
+<p>找到项目目录里的 <code>book.toml</code> 文件（就在 <code>my-math-book/</code> 下），打开并添加以下内容：</p>
+<pre><code class="language-toml">[book]
+title = "我的数学书"
+authors = ["你的名字"]
+
+[output.html]
+
+[preprocessor.katex]
+</code></pre>
+<p>这段 <code>[preprocessor.katex]</code> 是启用数学公式渲染的关键。</p>
+<hr />
+<h2 id="-第-5-步写一个带公式的-markdown-文件"><a class="header" href="#-第-5-步写一个带公式的-markdown-文件">✅ 第 5 步：写一个带公式的 Markdown 文件</a></h2>
+<p>打开 <code>src/SUMMARY.md</code>，链接一个新章节：</p>
+<pre><code class="language-markdown"># Summary
+
+- [介绍](introduction.md)
+</code></pre>
+<p>然后新建 <code>src/introduction.md</code>，写入：</p>
+<pre><code class="language-markdown"># 数学公式测试
+
+这是一个行内公式：$E = mc^2$
+
+这是一个块级公式：
+
+$$
+\int_0^1 x^2 \, dx = \frac{1}{3}
+$$
+</code></pre>
+<hr />
+<h2 id="-第-6-步运行并预览"><a class="header" href="#-第-6-步运行并预览">✅ 第 6 步：运行并预览</a></h2>
+<p>在项目目录下运行：</p>
+<pre><code class="language-bash">mdbook serve
+</code></pre>
+<p>然后访问 <a href="http://localhost:3000">http://localhost:3000</a> 查看效果！</p>
+<p>你应该会看到公式已经被漂亮地渲染出来 ✅</p>
+<hr />
+<h2 id="-常见错误排查"><a class="header" href="#-常见错误排查">❗ 常见错误排查</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>问题</th><th>解决办法</th></tr></thead><tbody>
+<tr><td>数学公式没渲染</td><td>检查 <code>book.toml</code> 中是否包含 <code>[preprocessor.katex]</code></td></tr>
+<tr><td>运行时无 katex 插件生效提示</td><td>确保你运行的是 <code>mdbook serve</code>，不是 VSCode 的 Markdown 预览</td></tr>
+<tr><td>页面加载失败</td><td>检查是否在项目目录中运行 <code>mdbook serve</code></td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-后续你可以做的"><a class="header" href="#-后续你可以做的">✅ 后续你可以做的</a></h2>
+<ul>
+<li>添加更多页面、章节（只需修改 <code>SUMMARY.md</code>）</li>
+<li>支持图表（可以安装 <code>mdbook-mermaid</code>）</li>
+<li>自定义主题风格</li>
+</ul>
+<hr />
+<p>然后测试安装是否成功：</p>
+<pre><code class="language-bash">rustc --version
+cargo --version
+</code></pre>
+<hr />
+<pre><code>
+
+
+
+
+
+
+
+
+
+---
+
+## 🛠 第 3 步：可选工具推荐
+
+| 工具              | 用途                  | 安装方法                           |
+| --------------- | ------------------- | ------------------------------ |
+| `rust-analyzer` | 编辑器代码提示（VS Code 推荐） | 在 VS Code 插件市场安装               |
+| `clippy`        | 代码风格检查              | `rustup component add clippy`  |
+| `rustfmt`       | 自动格式化代码             | `rustup component add rustfmt` |
+
+---
+
+## 🧠 附：卸载 Rust
+
+若需要卸载，可执行：
+
+```bash
+rustup self uninstall
+</code></pre>
+<hr />
+<h2 id="-教程推荐中文"><a class="header" href="#-教程推荐中文">🧭 教程推荐（中文）</a></h2>
+<ul>
+<li><a href="https://rustwiki.org/zh-CN/book/">Rust官方中文文档</a>（也叫“Rust 程序设计语言”）</li>
+<li><a href="https://rustwiki.org/zh-CN/rust-by-example/">Rust by Example 中文版</a></li>
+</ul>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../technique/ssh.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../technique/ssh.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

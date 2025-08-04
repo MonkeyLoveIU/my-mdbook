@@ -1,0 +1,459 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>pandas - 朕 的 回 忆 录</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">朕 的 回 忆 录</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<p>好的！以下是一篇<strong>全面总结 Pandas 和 NumPy 所有知识点</strong>的博客文章，适合初学者系统学习，也适合进阶者查漏补缺。文章将分为多个部分，涵盖基础知识、高级技巧、常用函数、实际案例等，结构清晰、内容丰富，可直接发布到博客。</p>
+<hr />
+<h1 id="-python-数据分析宝典numpy-和-pandas-全面知识点总结"><a class="header" href="#-python-数据分析宝典numpy-和-pandas-全面知识点总结">📚 Python 数据分析宝典：NumPy 和 Pandas 全面知识点总结</a></h1>
+<blockquote>
+<p>作者：KEY mon｜更新时间：2025-08-01
+关键词：NumPy、Pandas、数据分析、Python、数据清洗、数组、DataFrame</p>
+</blockquote>
+<hr />
+<h2 id="前言"><a class="header" href="#前言">前言</a></h2>
+<p>在数据科学和分析的世界里，<strong>NumPy 和 Pandas 是两把瑞士军刀</strong>。一个提供强大的数值计算能力，一个打造高效灵活的数据操作框架。如果你掌握了它们，就已经站在数据分析的门槛之内。本文将带你<strong>全面系统地学习 NumPy 和 Pandas 的所有核心知识点</strong>，帮助你打好数据分析的坚实基础。</p>
+<hr />
+<h2 id="-numpy-篇高性能数值计算库"><a class="header" href="#-numpy-篇高性能数值计算库">🧠 NumPy 篇：高性能数值计算库</a></h2>
+<h3 id="一numpy-简介"><a class="header" href="#一numpy-简介">一、NumPy 简介</a></h3>
+<ul>
+<li>
+<p>全称：<strong>Numerical Python</strong></p>
+</li>
+<li>
+<p>核心特点：</p>
+<ul>
+<li>支持多维数组（<code>ndarray</code>）</li>
+<li>计算速度远快于原生 Python 列表</li>
+<li>丰富的数学函数库</li>
+</ul>
+</li>
+</ul>
+<h3 id="二核心数据结构ndarray"><a class="header" href="#二核心数据结构ndarray">二、核心数据结构：<code>ndarray</code></a></h3>
+<pre><code class="language-python">import numpy as np
+a = np.array([[1, 2, 3], [4, 5, 6]])
+</code></pre>
+<ul>
+<li>
+<p>属性总结：</p>
+<div class="table-wrapper"><table><thead><tr><th>属性</th><th>说明</th></tr></thead><tbody>
+<tr><td><code>ndim</code></td><td>维度</td></tr>
+<tr><td><code>shape</code></td><td>各维度大小</td></tr>
+<tr><td><code>size</code></td><td>元素总数</td></tr>
+<tr><td><code>dtype</code></td><td>数据类型</td></tr>
+<tr><td><code>itemsize</code></td><td>每个元素所占字节数</td></tr>
+<tr><td><code>nbytes</code></td><td>所有元素占字节数</td></tr>
+</tbody></table>
+</div></li>
+</ul>
+<h3 id="三创建数组的常用方法"><a class="header" href="#三创建数组的常用方法">三、创建数组的常用方法</a></h3>
+<pre><code class="language-python">np.zeros((3, 4))
+np.ones((2, 2))
+np.eye(3)
+np.arange(0, 10, 2)
+np.linspace(0, 1, 5)
+np.random.rand(3, 3)
+np.full((2, 2), 7)
+</code></pre>
+<h3 id="四数组索引与切片"><a class="header" href="#四数组索引与切片">四、数组索引与切片</a></h3>
+<ul>
+<li>一维数组：<code>a[0]</code>, <code>a[1:4]</code></li>
+<li>多维数组：<code>a[1, 2]</code>, <code>a[:, 0]</code></li>
+<li>条件筛选：<code>a[a &gt; 3]</code></li>
+<li>花式索引：<code>a[[0, 2]]</code>, <code>a[[True, False, True]]</code></li>
+</ul>
+<h3 id="五常用数组操作"><a class="header" href="#五常用数组操作">五、常用数组操作</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>操作</th><th>示例</th></tr></thead><tbody>
+<tr><td>转置</td><td><code>a.T</code></td></tr>
+<tr><td>轴变换</td><td><code>np.swapaxes(a, 0, 1)</code></td></tr>
+<tr><td>改变形状</td><td><code>a.reshape(3, 2)</code></td></tr>
+<tr><td>合并数组</td><td><code>np.concatenate</code></td></tr>
+<tr><td>拆分数组</td><td><code>np.split</code>, <code>hsplit</code></td></tr>
+<tr><td>去重</td><td><code>np.unique(a)</code></td></tr>
+<tr><td>排序</td><td><code>np.sort(a)</code></td></tr>
+</tbody></table>
+</div>
+<h3 id="六数学函数与统计函数"><a class="header" href="#六数学函数与统计函数">六、数学函数与统计函数</a></h3>
+<pre><code class="language-python">np.sum(a)
+np.mean(a)
+np.std(a)
+np.var(a)
+np.min(a)
+np.max(a)
+np.argmin(a)
+np.argmax(a)
+</code></pre>
+<h3 id="七线性代数numpylinalg"><a class="header" href="#七线性代数numpylinalg">七、线性代数（<code>numpy.linalg</code>）</a></h3>
+<pre><code class="language-python">np.dot(a, b)
+np.linalg.inv(a)
+np.linalg.det(a)
+np.linalg.eig(a)
+</code></pre>
+<h3 id="八广播机制"><a class="header" href="#八广播机制">八、广播机制</a></h3>
+<pre><code class="language-python">a = np.array([1, 2, 3])
+b = 2
+c = a + b  # 自动广播
+</code></pre>
+<hr />
+<h2 id="-pandas-篇数据分析的核心库"><a class="header" href="#-pandas-篇数据分析的核心库">📊 Pandas 篇：数据分析的核心库</a></h2>
+<h3 id="一pandas-简介"><a class="header" href="#一pandas-简介">一、Pandas 简介</a></h3>
+<ul>
+<li>
+<p>两个核心数据结构：</p>
+<ul>
+<li><code>Series</code>: 一维带标签的数组</li>
+<li><code>DataFrame</code>: 二维表格型数据结构</li>
+</ul>
+</li>
+</ul>
+<h3 id="二创建数据结构"><a class="header" href="#二创建数据结构">二、创建数据结构</a></h3>
+<pre><code class="language-python">import pandas as pd
+s = pd.Series([1, 2, 3], index=['a', 'b', 'c'])
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob'],
+    'age': [25, 30]
+})
+</code></pre>
+<h3 id="三series-操作"><a class="header" href="#三series-操作">三、Series 操作</a></h3>
+<ul>
+<li>访问：<code>s['a']</code>, <code>s[0]</code></li>
+<li>切片：<code>s['a':'c']</code></li>
+<li>数学操作：<code>s + 1</code>, <code>s.mean()</code></li>
+<li>判断空值：<code>s.isnull()</code>, <code>s.notnull()</code></li>
+</ul>
+<h3 id="四dataframe-操作"><a class="header" href="#四dataframe-操作">四、DataFrame 操作</a></h3>
+<h4 id="1-查看结构"><a class="header" href="#1-查看结构">1. 查看结构</a></h4>
+<pre><code class="language-python">df.head()
+df.tail()
+df.info()
+df.describe()
+df.columns
+df.index
+</code></pre>
+<h4 id="2-访问数据"><a class="header" href="#2-访问数据">2. 访问数据</a></h4>
+<pre><code class="language-python">df['name']
+df[['name', 'age']]
+df.loc[0]          # 按标签访问
+df.iloc[0]         # 按位置访问
+df.at[0, 'name']
+df.iat[0, 1]
+</code></pre>
+<h4 id="3-增删改查"><a class="header" href="#3-增删改查">3. 增删改查</a></h4>
+<pre><code class="language-python">df['score'] = [90, 85]       # 增加列
+df.drop(columns='score')     # 删除列
+df.drop(index=1)             # 删除行
+df.rename(columns={'name': 'Name'})
+</code></pre>
+<h4 id="4-条件筛选与布尔索引"><a class="header" href="#4-条件筛选与布尔索引">4. 条件筛选与布尔索引</a></h4>
+<pre><code class="language-python">df[df['age'] &gt; 25]
+df[(df['age'] &gt; 20) &amp; (df['name'] == 'Bob')]
+</code></pre>
+<h3 id="五缺失值处理"><a class="header" href="#五缺失值处理">五、缺失值处理</a></h3>
+<pre><code class="language-python">df.isnull()
+df.fillna(0)
+df.dropna()
+</code></pre>
+<h3 id="六数据转换与映射"><a class="header" href="#六数据转换与映射">六、数据转换与映射</a></h3>
+<pre><code class="language-python">df['age'].astype(int)
+df['name'].str.upper()
+df['score'] = df['score'].apply(lambda x: x * 1.1)
+</code></pre>
+<h3 id="七数据合并与拼接"><a class="header" href="#七数据合并与拼接">七、数据合并与拼接</a></h3>
+<pre><code class="language-python">pd.concat([df1, df2], axis=0)  # 按行拼接
+pd.concat([df1, df2], axis=1)  # 按列拼接
+pd.merge(df1, df2, on='id', how='inner')
+</code></pre>
+<h3 id="八分组与聚合"><a class="header" href="#八分组与聚合">八、分组与聚合</a></h3>
+<pre><code class="language-python">df.groupby('name').mean()
+df.groupby('name')['score'].agg(['mean', 'max'])
+</code></pre>
+<h3 id="九排序与去重"><a class="header" href="#九排序与去重">九、排序与去重</a></h3>
+<pre><code class="language-python">df.sort_values('age')
+df.drop_duplicates()
+</code></pre>
+<h3 id="十时间序列处理可选"><a class="header" href="#十时间序列处理可选">十、时间序列处理（可选）</a></h3>
+<pre><code class="language-python">pd.to_datetime(df['date'])
+df.set_index('date', inplace=True)
+df.resample('M').sum()  # 按月重采样
+</code></pre>
+<hr />
+<h2 id="-numpy--pandas-实战技巧"><a class="header" href="#-numpy--pandas-实战技巧">🛠️ NumPy + Pandas 实战技巧</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>技巧</th><th>说明</th></tr></thead><tbody>
+<tr><td>用 <code>isin()</code> 进行多条件过滤</td><td><code>df[df['name'].isin(['Alice'])]</code></td></tr>
+<tr><td>多重索引（MultiIndex）</td><td><code>df.set_index(['col1', 'col2'])</code></td></tr>
+<tr><td>apply vs map vs applymap</td><td>行/列/元素级操作</td></tr>
+<tr><td>快速统计类别数量</td><td><code>df['gender'].value_counts()</code></td></tr>
+<tr><td>样本抽样</td><td><code>df.sample(n=5)</code></td></tr>
+<tr><td>查询空值行</td><td><code>df[df.isnull().any(axis=1)]</code></td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-总结"><a class="header" href="#-总结">🔚 总结</a></h2>
+<blockquote>
+<p>NumPy 是你高效处理矩阵运算和数值分析的工具，Pandas 则是你操控结构化数据、做数据清洗、转化、分析的得力助手。</p>
+</blockquote>
+<p>建议学习路线：</p>
+<ol>
+<li><strong>先掌握 NumPy 的数组基础</strong></li>
+<li><strong>再深入 Pandas 的 DataFrame 处理技巧</strong></li>
+<li><strong>最后结合实际数据案例实战练习（如 Titanic 数据集）</strong></li>
+</ol>
+<hr />
+<h2 id="-附录资源推荐"><a class="header" href="#-附录资源推荐">📦 附录资源推荐</a></h2>
+<ul>
+<li>NumPy 官方文档：<a href="https://numpy.org/doc/">https://numpy.org/doc/</a></li>
+<li>Pandas 官方文档：<a href="https://pandas.pydata.org/docs/">https://pandas.pydata.org/docs/</a></li>
+<li>免费项目练习平台：Kaggle（<a href="https://www.kaggle.com/%EF%BC%89">https://www.kaggle.com/）</a></li>
+</ul>
+<hr />
+<p>如果你需要我为这篇文章：</p>
+<ul>
+<li>制作 Markdown 博客格式 ✔️</li>
+<li>添加图示或可视化案例 ✔️</li>
+<li>加上中文注释版代码样例 ✔️</li>
+<li>拆分成多个系列文章 ✔️</li>
+</ul>
+<p>随时告诉我，我可以继续帮你完善这篇“数据分析百科全书”。</p>
+<p>是否需要我将这篇转为 Markdown 或拆分发布格式？</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Probability_Theory_and_Mathematical_Statistics/intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../ai/KNN.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Probability_Theory_and_Mathematical_Statistics/intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../ai/KNN.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

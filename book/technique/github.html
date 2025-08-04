@@ -1,0 +1,468 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>mdbook，github仓库同步 - 朕 的 回 忆 录</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">朕 的 回 忆 录</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<p>非常好！你已经写好了 mdBook 内容，现在只需 <strong>三步</strong> 就能完成：</p>
+<blockquote>
+<p>✅ 本地同步到 GitHub
+✅ 后续更新也能同步
+✅ 通过 GitHub Pages 自动部署网站</p>
+</blockquote>
+<p>最清晰、零废话的<strong>实操指南</strong>👇</p>
+<hr />
+<h2 id="-一准备-github-仓库"><a class="header" href="#-一准备-github-仓库">✅ 一、准备 GitHub 仓库</a></h2>
+<ol>
+<li>登录 <a href="https://github.com">https://github.com</a></li>
+<li>新建一个仓库（repo），名字可以叫：<code>my-mdbook</code></li>
+<li>不勾选 <code>README</code>、<code>gitignore</code>，保持干净空仓库</li>
+</ol>
+<p>记下仓库地址，例如：</p>
+<pre><code class="language-bash">https://github.com/你的用户名/my-mdbook.git
+</code></pre>
+<hr />
+<h2 id="-二将本地-mdbook-推送到-github-需要先下载git---参考第五节内容"><a class="header" href="#-二将本地-mdbook-推送到-github-需要先下载git---参考第五节内容">✅ 二、将本地 mdBook 推送到 GitHub (需要先下载Git - 参考第五节内容)</a></h2>
+<h3 id="1-打开终端定位到你的项目根目录"><a class="header" href="#1-打开终端定位到你的项目根目录">1. 打开终端，定位到你的项目根目录</a></h3>
+<p>假设你目录是 <code>D:\mdbook</code>：</p>
+<pre><code class="language-bash">cd D:\mdbook
+</code></pre>
+<h3 id="2-初始化-git如果还没初始化"><a class="header" href="#2-初始化-git如果还没初始化">2. 初始化 Git（如果还没初始化）</a></h3>
+<pre><code class="language-bash">git init
+</code></pre>
+<h3 id="3-添加远程仓库地址"><a class="header" href="#3-添加远程仓库地址">3. 添加远程仓库地址</a></h3>
+<pre><code class="language-bash">git remote add origin https://github.com/你的用户名/my-mdbook.git
+</code></pre>
+<hr />
+<h2 id="-官方版本的三条命令作用如下"><a class="header" href="#-官方版本的三条命令作用如下">✅ 官方版本的三条命令作用如下：</a></h2>
+<pre><code class="language-bash">git remote add origin https://github.com/MonkeyLoveIU/my-mdbook.git  
+git branch -M main  
+git push -u origin main
+</code></pre>
+<hr />
+<h2 id="-如果你刚初始化项目完整流程应是"><a class="header" href="#-如果你刚初始化项目完整流程应是">🧠 如果你刚初始化项目，完整流程应是：</a></h2>
+<pre><code class="language-bash"># 1. 初始化本地仓库（你已完成）
+git init
+
+# 2. 添加所有文件
+git add .
+
+# 3. 创建首次提交（不能写 -M，应该是 -m）
+git commit -m "initial commit"
+
+# 4. 设置远程仓库地址
+git remote add origin https://github.com/MonkeyLoveIU/my-mdbook.git
+
+# 5. 重命名当前分支为 main（如非 main）
+git branch -M main
+
+# 6. 推送到远程 GitHub，并关联本地分支 （如果网络问题等未成功，请尝试SSH连接，参考第六节内容）
+git push -u origin main
+</code></pre>
+<hr />
+<h2 id="-tldr-总结一句话"><a class="header" href="#-tldr-总结一句话">✅ TL;DR 总结一句话：</a></h2>
+<blockquote>
+<p>✔️ <strong>你已经 commit 了，再执行这 3 条就足够了</strong>：</p>
+</blockquote>
+<pre><code class="language-bash">git remote add origin https://github.com/MonkeyLoveIU/my-mdbook.git  
+git branch -M main  
+git push -u origin main
+</code></pre>
+<p>否则，请记得先执行：</p>
+<pre><code class="language-bash">git add .
+git commit -m "initial commit"
+</code></pre>
+<hr />
+<p>✅ 推送成功后，我们就可以进行 <strong>GitHub Pages 自动部署配置</strong>。</p>
+<hr />
+<h2 id="-三配置-github-pages-自动部署-mdbook-网站"><a class="header" href="#-三配置-github-pages-自动部署-mdbook-网站">✅ 三、配置 GitHub Pages 自动部署 mdBook 网站</a></h2>
+<h3 id="方法一使用-github-actions-自动部署推荐"><a class="header" href="#方法一使用-github-actions-自动部署推荐">方法一：<strong>使用 GitHub Actions 自动部署（推荐）</strong></a></h3>
+<p>mdBook 官方推荐使用 Actions 自动构建并发布到 <code>gh-pages</code> 分支。
+你只需要<strong>添加一个 workflow 文件</strong>即可。</p>
+<hr />
+<h3 id="-1-创建目录-githubworkflows-和部署文件"><a class="header" href="#-1-创建目录-githubworkflows-和部署文件">🔧 1. 创建目录 <code>.github/workflows/</code> 和部署文件</a></h3>
+<p>在你的本地项目中新建文件：</p>
+<pre><code>.github/workflows/deploy.yml
+</code></pre>
+<p>内容如下（可直接复制）👇</p>
+<pre><code class="language-yaml">
+name: Deploy mdBook site to Pages
+
+on: 
+  # Runs on pushes targeting the default branch
+  push: 
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust and mdBook
+        run: |
+          curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf -y | sh
+          rustup update
+          cargo install mdbook
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Build with mdBook
+        run: mdbook build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./book
+
+  # Deployment job
+  deploy: 
+    environment: 
+      name: github-pages 
+      url: ${{ steps.deployment.outputs.page_url }} 
+    runs-on: ubuntu-latest 
+    needs: build 
+    steps: 
+      - name: Deploy to GitHub Pages 
+        id: deployment 
+        uses: actions/deploy-pages@v4
+
+</code></pre>
+<hr />
+<h3 id="-2-启用-github-pages"><a class="header" href="#-2-启用-github-pages">🔧 2. 启用 GitHub Pages</a></h3>
+<p>进入你的仓库页面：</p>
+<ul>
+<li>
+<p>点右上角 <code>⚙️ Settings</code></p>
+</li>
+<li>
+<p>左边栏点击 <code>Pages</code></p>
+</li>
+<li>
+<p>选择：</p>
+<ul>
+<li><code>Source</code> → <code>Deploy from a branch</code></li>
+<li><code>Branch</code> → <code>main</code></li>
+<li><code>Folder</code> → <code>/ (root)</code></li>
+</ul>
+</li>
+</ul>
+<p>然后保存 ✅</p>
+<p>🚀 你的 mdBook 网页就发布了，地址是：</p>
+<pre><code>https://你的用户名.github.io/仓库名/
+</code></pre>
+<hr />
+<h2 id="-四后续更新流程"><a class="header" href="#-四后续更新流程">✅ 四、后续更新流程</a></h2>
+<ol>
+<li>修改你的 Markdown 或样式文件</li>
+<li>使用 Git 提交并推送：</li>
+</ol>
+<pre><code class="language-bash">git add .
+git commit -m "更新内容"
+git push
+</code></pre>
+<p>add 命令</p>
+<h3 id="1-同时添加多个文件"><a class="header" href="#1-同时添加多个文件">1. <strong>同时添加多个文件</strong></a></h3>
+<p>你可以在一个 <code>git add</code> 命令中列出多个文件，像这样：</p>
+<pre><code class="language-bash">git add src/chapter2.md SUMMARY.md
+</code></pre>
+<p>这会将 <strong><code>chapter2.md</code></strong> 和 <strong><code>SUMMARY.md</code></strong> 文件都添加到暂存区。</p>
+<hr />
+<h3 id="2-添加整个目录"><a class="header" href="#2-添加整个目录">2. <strong>添加整个目录</strong></a></h3>
+<p>如果你想添加某个目录下的所有文件，可以使用：</p>
+<pre><code class="language-bash">git add src/
+</code></pre>
+<p>这会将 <code>src/</code> 目录下的所有修改过的文件添加到暂存区。如果你只想添加特定类型的文件（比如 <code>.md</code> 文件），也可以使用通配符：</p>
+<pre><code class="language-bash">git add src/*.md
+</code></pre>
+<hr />
+<h3 id="3-一次性添加所有修改的文件"><a class="header" href="#3-一次性添加所有修改的文件">3. <strong>一次性添加所有修改的文件</strong></a></h3>
+<p>如果你想一次性添加所有已修改的文件，可以使用：</p>
+<pre><code class="language-bash">git add .
+</code></pre>
+<p>这个命令会把当前目录下的所有已修改和新增的文件都添加到暂存区。</p>
+<hr />
+<h3 id="4-查看暂存区内容"><a class="header" href="#4-查看暂存区内容">4. <strong>查看暂存区内容</strong></a></h3>
+<p>你可以在 <code>git add</code> 之后，使用以下命令来查看已经加入暂存区的文件：</p>
+<pre><code class="language-bash">git status
+</code></pre>
+<p>这会列出所有已暂存的文件，帮助你确认是否所有需要的文件都被添加。</p>
+<hr />
+<h3 id="5-提交所有文件"><a class="header" href="#5-提交所有文件">5. <strong>提交所有文件</strong></a></h3>
+<p>一旦你将文件添加到暂存区，执行以下命令提交所有更改：</p>
+<pre><code class="language-bash">git commit -m "Add Chapter 2 and update SUMMARY.md"
+git push
+</code></pre>
+<hr />
+<ol start="3">
+<li>然后 <strong>GitHub 会自动构建并发布</strong></li>
+</ol>
+<p>你只需要等待 1~2 分钟后刷新网页即可看到更新 ✨</p>
+<hr />
+<hr />
+<h2 id="-总结流程图"><a class="header" href="#-总结流程图">🎯 总结流程图</a></h2>
+<pre><code>[本地 mdBook 项目]
+       ↓
+  git push 到 main 分支
+       ↓
+[GitHub Actions 自动构建]
+       ↓
+  构建 book/ 输出目录
+       ↓
+自动部署到 gh-pages 分支
+       ↓
+  GitHub Pages 发布网页
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../technique/write.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../technique/git.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../technique/write.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../technique/git.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

@@ -30,13 +30,13 @@ jobs:
           rustup update
           cargo install mdbook
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
 
-    - name: Insert timestamps into markdown files
-      run: python insert_timestamp.py 
+      - name: Insert timestamps into markdown files
+        run: python insert_timestamp.py 
 
       - name: Setup Pages
         id: pages

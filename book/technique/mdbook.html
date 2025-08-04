@@ -1,0 +1,464 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>mdBook - 朕 的 回 忆 录</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">朕 的 回 忆 录</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<p><code>GitBook</code> 和 <code>mdBook</code> 都是用于生成文档网站的工具，但它们在定位、生态和使用体验上有很大差异。以下是详细对比，帮你判断哪个更适合你使用：</p>
+<hr />
+<h2 id="-简要对比"><a class="header" href="#-简要对比">🔍 简要对比</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>项目</th><th>GitBook</th><th>mdBook</th></tr></thead><tbody>
+<tr><td>语言</td><td>JavaScript / TypeScript</td><td>Rust</td></tr>
+<tr><td>安装方式</td><td>云端服务为主，本地 CLI 安装较繁琐</td><td>单个二进制文件，跨平台，安装简单</td></tr>
+<tr><td>输出格式</td><td>HTML（主打网页）</td><td>HTML、PDF（借助插件）、ePub 等</td></tr>
+<tr><td>编辑方式</td><td>支持 Web 编辑器，也支持 Git 同步</td><td>Markdown 文件 + 配置文件</td></tr>
+<tr><td>自定义程度</td><td>中等（托管平台限制较多）</td><td>高（全本地构建，主题/模板可自定义）</td></tr>
+<tr><td>插件支持</td><td>有，但官方 GitBook 插件生态收缩</td><td>有社区插件系统，且活跃</td></tr>
+<tr><td>适合对象</td><td>非技术用户、团队文档、产品说明书</td><td>开发者、技术文档、Rust 社区</td></tr>
+<tr><td>开源程度</td><td>新 GitBook 不是开源（老版本才是）</td><td>完全开源（由 Rust 官方社区维护）</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="-各自优缺点"><a class="header" href="#-各自优缺点">🚀 各自优缺点</a></h2>
+<h3 id="-gitbook-优点"><a class="header" href="#-gitbook-优点">🟢 GitBook 优点</a></h3>
+<ul>
+<li>✅ 所见即所得编辑器（网页版），上手快。</li>
+<li>✅ 内置团队协作、版本管理、评论等功能。</li>
+<li>✅ 云端托管省事，适合非技术团队或写作习惯 GUI 编辑的人。</li>
+</ul>
+<h3 id="-gitbook-缺点"><a class="header" href="#-gitbook-缺点">🔴 GitBook 缺点</a></h3>
+<ul>
+<li>❌ 商业化严重，新版需要注册账号，免费版功能有限。</li>
+<li>❌ 本地部署和私有化支持很差（新版本不推荐本地使用）。</li>
+<li>❌ 自定义功能弱，主题不好改。</li>
+</ul>
+<hr />
+<h3 id="-mdbook-优点"><a class="header" href="#-mdbook-优点">🟢 mdBook 优点</a></h3>
+<ul>
+<li>✅ 轻量、开源、易安装，尤其适合技术人。</li>
+<li>✅ 支持本地构建、离线阅读、自定义主题、代码高亮。</li>
+<li>✅ 插件系统强大，比如 <code>mdbook-toc</code>、<code>mdbook-pdf</code>、<code>mdbook-katex</code>。</li>
+<li>✅ 编写方式纯 Markdown，易于版本管理（Git）。</li>
+</ul>
+<h3 id="-mdbook-缺点"><a class="header" href="#-mdbook-缺点">🔴 mdBook 缺点</a></h3>
+<ul>
+<li>❌ 没有 Web 编辑器，对非开发者不太友好。</li>
+<li>❌ 插件功能偶尔不稳定（如 PDF 需要 wkhtmltopdf 等额外依赖）。</li>
+<li>❌ 多语言支持略微复杂，需额外配置。</li>
+</ul>
+<hr />
+<h2 id="-如何选择"><a class="header" href="#-如何选择">🧠 如何选择？</a></h2>
+<h3 id="-推荐使用-gitbook-如果你"><a class="header" href="#-推荐使用-gitbook-如果你">✅ 推荐使用 <strong>GitBook</strong> 如果你：</a></h3>
+<ul>
+<li>是非技术背景用户或内容创作者；</li>
+<li>喜欢图形化界面；</li>
+<li>不想折腾部署、渲染、主题等；</li>
+<li>写的是产品文档、教程、团队手册等；</li>
+<li>不介意云端托管；</li>
+</ul>
+<h3 id="-推荐使用-mdbook-如果你"><a class="header" href="#-推荐使用-mdbook-如果你">✅ 推荐使用 <strong>mdBook</strong> 如果你：</a></h3>
+<ul>
+<li>是开发者或技术人员；</li>
+<li>想要本地构建或私有化部署；</li>
+<li>需要高度自定义、Markdown 原生编辑；</li>
+<li>在写 API 文档、技术规范、开源项目文档；</li>
+<li>不介意命令行操作；</li>
+</ul>
+<hr />
+<h2 id="-补充推荐"><a class="header" href="#-补充推荐">🔧 补充推荐</a></h2>
+<p>如果你还在探索，也可以参考：</p>
+<div class="table-wrapper"><table><thead><tr><th>工具</th><th>特点</th></tr></thead><tbody>
+<tr><td>Docusaurus</td><td>React 构建，适合文档 + 博客混合站点</td></tr>
+<tr><td>VitePress</td><td>Vue + Vite，轻量现代，写法简洁</td></tr>
+<tr><td>Docsify</td><td>即时预览，纯前端部署，极简文档风格</td></tr>
+</tbody></table>
+</div>
+<hr />
+<hr />
+<h1 id="mdbook-从零到大神学习路径"><a class="header" href="#mdbook-从零到大神学习路径">📘《mdBook 从零到大神》学习路径</a></h1>
+<hr />
+<h2 id="-第-0-阶段准备环境"><a class="header" href="#-第-0-阶段准备环境">🚦 第 0 阶段：准备环境</a></h2>
+<h3 id="-目标"><a class="header" href="#-目标">🎯 目标</a></h3>
+<p>学会安装和运行 mdBook 基础命令。</p>
+<h3 id="-教程内容"><a class="header" href="#-教程内容">📚 教程内容</a></h3>
+<ol>
+<li>
+<p>安装 Rust（mdBook 用 Rust 构建）</p>
+<pre><code class="language-bash">curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+</code></pre>
+</li>
+<li>
+<p>安装 <code>mdBook</code>：</p>
+<pre><code class="language-bash">cargo install mdbook
+</code></pre>
+</li>
+<li>
+<p>创建一本书：</p>
+<pre><code class="language-bash">mdbook init my-book
+cd my-book
+mdbook serve
+</code></pre>
+<p>访问：<a href="http://localhost:3000">http://localhost:3000</a> 查看效果</p>
+</li>
+</ol>
+<hr />
+<h2 id="-第-1-阶段基础结构和-markdown-编写"><a class="header" href="#-第-1-阶段基础结构和-markdown-编写">🧱 第 1 阶段：基础结构和 Markdown 编写</a></h2>
+<h3 id="-目标-1"><a class="header" href="#-目标-1">🎯 目标</a></h3>
+<p>理解 mdBook 的目录结构、编辑方式。</p>
+<h3 id="-教程内容-1"><a class="header" href="#-教程内容-1">📚 教程内容</a></h3>
+<ul>
+<li><code>book.toml</code>：配置文件</li>
+<li><code>src/SUMMARY.md</code>：目录结构控制器</li>
+<li>每个章节都用一个 <code>.md</code> 文件</li>
+</ul>
+<h3 id="-示例"><a class="header" href="#-示例">✅ 示例：</a></h3>
+<pre><code class="language-md"># Summary
+
+- [简介](README.md)
+- [第一章](chapter_1.md)
+  - [子章节](chapter_1_1.md)
+</code></pre>
+<hr />
+<h2 id="-第-2-阶段样式美化与主题"><a class="header" href="#-第-2-阶段样式美化与主题">🎨 第 2 阶段：样式、美化与主题</a></h2>
+<h3 id="-目标-2"><a class="header" href="#-目标-2">🎯 目标</a></h3>
+<p>掌握样式自定义、插入图片、代码高亮等常见美化方式。</p>
+<h3 id="-教程内容-2"><a class="header" href="#-教程内容-2">📚 教程内容</a></h3>
+<ul>
+<li>
+<p>使用 Markdown 扩展：表格、脚注、数学公式（KaTeX）</p>
+</li>
+<li>
+<p>图片插入：</p>
+<pre><code class="language-md">![描述](./images/demo.png)
+</code></pre>
+</li>
+<li>
+<p>自定义 CSS：
+新建 <code>theme</code> 文件夹 ➜ <code>book.toml</code> 里配置 <code>theme = ["./theme"]</code></p>
+</li>
+</ul>
+<hr />
+<h2 id="-第-3-阶段插件与高级功能"><a class="header" href="#-第-3-阶段插件与高级功能">⚙️ 第 3 阶段：插件与高级功能</a></h2>
+<h3 id="-目标-3"><a class="header" href="#-目标-3">🎯 目标</a></h3>
+<p>学会使用插件系统，扩展功能。</p>
+<h3 id="-常用插件"><a class="header" href="#-常用插件">📚 常用插件</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>插件名</th><th>功能说明</th></tr></thead><tbody>
+<tr><td><code>mdbook-toc</code></td><td>自动生成目录</td></tr>
+<tr><td><code>mdbook-katex</code></td><td>数学公式支持</td></tr>
+<tr><td><code>mdbook-mermaid</code></td><td>流程图、时序图支持</td></tr>
+<tr><td><code>mdbook-pdf</code></td><td>导出 PDF（需安装 wkhtmltopdf）</td></tr>
+</tbody></table>
+</div>
+<h4 id="示例启用-katex-插件"><a class="header" href="#示例启用-katex-插件">示例：启用 KaTeX 插件</a></h4>
+<ol>
+<li>
+<p>安装插件：</p>
+<pre><code class="language-bash">cargo install mdbook-katex
+</code></pre>
+</li>
+<li>
+<p><code>book.toml</code> 添加：</p>
+<pre><code class="language-toml">[preprocessor.katex]
+</code></pre>
+</li>
+</ol>
+<hr />
+<h2 id="-第-4-阶段部署与自动化"><a class="header" href="#-第-4-阶段部署与自动化">🛠️ 第 4 阶段：部署与自动化</a></h2>
+<h3 id="-目标-4"><a class="header" href="#-目标-4">🎯 目标</a></h3>
+<p>学会将 mdBook 自动部署到线上，例如 GitHub Pages。</p>
+<h3 id="-教程内容-3"><a class="header" href="#-教程内容-3">📚 教程内容</a></h3>
+<h4 id="github-actions-自动部署"><a class="header" href="#github-actions-自动部署">GitHub Actions 自动部署</a></h4>
+<p><code>.github/workflows/deploy.yml</code>：</p>
+<pre><code class="language-yaml">name: Deploy Book
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+    - run: cargo install mdbook
+    - run: mdbook build
+    - uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./book
+</code></pre>
+<hr />
+<h2 id="-第-5-阶段自定义构建流程--插件开发"><a class="header" href="#-第-5-阶段自定义构建流程--插件开发">🧙 第 5 阶段：自定义构建流程 &amp; 插件开发</a></h2>
+<h3 id="-目标-5"><a class="header" href="#-目标-5">🎯 目标</a></h3>
+<p>可以为团队/项目开发自己的 mdBook 插件，或构建自己的模板系统。</p>
+<h3 id="-教程内容-4"><a class="header" href="#-教程内容-4">📚 教程内容</a></h3>
+<ul>
+<li>
+<p>插件结构规范：<a href="https://rust-lang.github.io/mdBook/for_developers/preprocessors.html">https://rust-lang.github.io/mdBook/for_developers/preprocessors.html</a></p>
+</li>
+<li>
+<p>使用 Rust 编写插件（支持 JSON 与 stdin/stdout 通信）</p>
+</li>
+<li>
+<p>示例插件结构：</p>
+<pre><code>my-plugin/
+  └─ src/main.rs
+</code></pre>
+</li>
+</ul>
+<hr />
+<h2 id="-进阶资源推荐"><a class="header" href="#-进阶资源推荐">🏁 进阶资源推荐</a></h2>
+<ul>
+<li>官方文档：<a href="https://rust-lang.github.io/mdBook/">https://rust-lang.github.io/mdBook/</a></li>
+<li>GitHub 示例：<a href="https://github.com/rust-lang/mdBook">https://github.com/rust-lang/mdBook</a></li>
+<li>高级插件合集：<a href="https://github.com/azerupi/mdBook/wiki/Third-party-Plugins">https://github.com/azerupi/mdBook/wiki/Third-party-Plugins</a></li>
+<li>社区主题：<a href="https://github.com/search?q=mdbook+theme">https://github.com/search?q=mdbook+theme</a></li>
+</ul>
+<hr />
+<p>我将逐阶段带你走完整个流程（配套示例、代码文件、部署测试），像教程一样给你逐步讲解和演示。
+那么现在我们就一步步走。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../ceri.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../technique/mdbookDeployment Process.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../ceri.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../technique/mdbookDeployment Process.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

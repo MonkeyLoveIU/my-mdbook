@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="navy sidebar-visible" dir="ltr">
+<html lang="en" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -29,13 +29,12 @@
         <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="theme/custom.css">
 
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
-            const default_light_theme = "navy";
+            const default_light_theme = "light";
             const default_dark_theme = "navy";
             window.path_to_searchindex_js = "searchindex.js";
         </script>
@@ -78,7 +77,7 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
-            html.classList.remove('navy')
+            html.classList.remove('light')
             html.classList.add(theme);
             html.classList.add("js");
         </script>
@@ -176,21 +175,18 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p style="text-align: right; font-size: 18px; color: gray;">
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<p style="text-align: right; font-size: 18px; color: gray;">
   Powered By Monkey
 </p>
 <hr />
 <p>欢迎来到这本回忆录的世界 🎉</p>
+<p>大家好呀，让我们就这样交流吧！！！</p>
 <h1 id="简介"><a class="header" href="#简介">简介</a></h1>
 <p>欢迎阅读我的第一本 MdBook ！</p>
-<p>此书将记录我的过往的二十三载我仍记得的时光</p>
+<p>此书将记录我的过往的二十三载我仍记得的时光,</p>
+<p>所思，所学，所念，所感...</p>
 <p>将记录2025年7月前</p>
-<p>这里是简介部分，写的是一些介绍内容。</p>
-<details>
-<summary>点击展开内容</summary>
-<pre><code class="language-js">console.log("这段代码可以折叠");
-</code></pre>
-</details>
 <hr />
 
                     </main>
@@ -249,7 +245,6 @@
         <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="theme/extra.js"></script>
 
 
 
