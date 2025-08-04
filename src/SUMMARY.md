@@ -98,6 +98,7 @@
   - [mdbook，github仓库同步](./technique/github.md)
   - [Git安装](./technique/git.md)
   - [SSH推送](./technique/ssh.md)
+  - [添加时间](./technique/time.md)
   - [数学公式插件](./technique/math.md)
 
 
