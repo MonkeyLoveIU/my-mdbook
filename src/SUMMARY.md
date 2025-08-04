@@ -3,43 +3,91 @@
 - [简介](intro.md)
 - [第一章](chapter_1.md)
 
-<!-- - [第二章](chapter_2.md) -->
+
 
 # 简介 | Intro | プロフ | préface
 
-<!-- - [1. 简介 | Intro | プロフ | préface](preface.md)
-- [2. 最近更新 | Last Updated](last-updated.md) -->
 
 # 博客阅读指南 | Blog Reading Guide
 
-- [3. 博客阅读指南](blog-reading.md)
-- [⭐ 4. 梦想清单 | Dream List](dream-list.md)
-- [5. 人生规划 | Life Planning](planning.md)
-- [6. 年度计划 | Year Plan](year-plan.md)
+- [博客阅读指南](blog-reading.md)
+- [梦想清单 | Dream List](dream-list.md)
+- [人生规划 | Life Planning](planning.md)
+- [年度计划 | Year Plan](year-plan.md)
 
 # 生活碎笔 | Life Traveling
 
 ---
 
+- [个人感触 | Feelings](literature/feelings.md)
+- [胡言乱语 | Insanes](literature/insanes.md)
+- [小说 | Novels](literature/novels.md)
 
-- [⭐ 7. 文章与写作 | Literature](literature/README.md)
-  - [8. 随笔随记 | Essays](literature/essays.md)
-  - [9. 诗词 | Poems](literature/poems.md)
-  - [10. 感触 | Feelings](literature/feelings.md)
-  - [11. 胡言 | Insanes](literature/insanes.md)
-  - [12. 小说 | Novels](literature/novels.md)
+# 大航海计划（学海计划） | Learning and Progressing
 
-# 学习与进步 | Learning and Progressing
 
----
+## 专业课程
 
-- [13. 各领域入门 | How to Learn](learning/intro.md)
-- [⭐ 14. 学海计划 | Patchouli Project](learning/patchouli.md)
-- [15. 计算机科学简入门指南 | Computer Science Guide](learning/cs-guide.md)
+- [数学分析 | Mathematical Analysis](./Mathematical_Analysis/intro.md)
 
-- [16.测试内容](./ceri.md)
+
+- [高等代数 | Advanced Algebra](./Advanced_Algebra/intro.md)
+
+
+- [解析几何 | Analytic Geometry](./Analytic_Geometry/intro.md)
+
+
+- [概率论与数理统计 | Probability Theory and Mathematical Statistics](./Probability_Theory_and_Mathematical_Statistics/intro.md)
+
+
+- [常微分方程]()
+
+- [复变函数论]()
+
+
+- [实变函数与泛函分析基础]()
+
+
+- [复变函数论]()
+
+- [近世代数]()
+
+
+
+## 编程语言
+
+- [python]()
+  - [pandas](./python.md/1.md)
+
+
+
+
+## AI
+
+
+- [机器学习]()
+  - []()
+  - []()
+  - [KNN](./ai/KNN.md)
+  - [距离度量](./ai/dist.md)
+
+- [各领域入门 | How to Learn](learning/intro.md)
+- [学海计划 | Patchouli Project](learning/patchouli.md)
+- [计算机科学简入门指南 | Computer Science Guide](learning/cs-guide.md)
+
+- [心理学]()
+  - []()
+
+- [文学]()
+
+
+
+- [测试内容](./ceri.md)
+
+
 
 # 写作与部署 | Writing and Deployment
+
 
 ---
 
@@ -50,3 +98,8 @@
   - [mdbook，github仓库同步](./technique/github.md)
   - [Git安装](./technique/git.md)
   - [SSH推送](./technique/ssh.md)
+  - [数学公式插件](./technique/math.md)
+
+
+
+
