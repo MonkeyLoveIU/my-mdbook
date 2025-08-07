@@ -1,21 +1,24 @@
 # Summary
 
+
+# 简介 | Intro | プロフ | préface
+
 - [简介](intro.md)
 - [第一章](chapter_1.md)
 
 
 
-<!-- # 简介 | Intro | プロフ | préface -->
 
-
-<!-- # 博客阅读指南 | Blog Reading Guide -->
+# 博客阅读指南 | Blog Reading Guide
 
 - [博客阅读指南](blog-reading.md)
 - [梦想清单 | Dream List](dream-list.md)
 - [人生规划 | Life Planning](planning.md)
 - [年度计划 | Year Plan](year-plan.md)
 
-<!-- # 生活碎笔 | Life Traveling -->
+---
+
+# 生活碎笔 | Life Traveling
 
 
 
@@ -23,10 +26,13 @@
 - [胡言乱语 | Insanes](life/insanes.md)
 - [小说 | Novels](life/novels.md)
 
-<!-- # 大航海计划（学海计划） | Learning and Progressing -->
+---
+
+# 大航海计划（学海计划） | Learning and Progressing
+---
 
 
-<!-- ## 专业课程 -->
+# 专业课程篇
 
 - [数学分析 | Mathematical Analysis](./Mathematical_Analysis/intro.md)
 
@@ -51,21 +57,29 @@
 - [近世代数 | Abstract Algebra](./Abstract_Algebra/intro.md)
 
 
+---
 
-<!-- ## 编程语言 -->
+# 编程语言篇
 
 - [python](./python.md/intro.md)
   - [pandas](./python.md/1.md)
 
 
 
+---
 
-<!-- ## AI -->
+
+# AI篇
+
+<div class="theme-separator-dark"></div>
+
+---
 
 
 - [机器学习](./ai/intro.md)
   - [KNN](./ai/KNN.md)
   - [距离度量](./ai/dist.md)
+
 
 - [各领域入门 | How to Learn](learning/intro.md)
 - [学海计划 | Patchouli Project](learning/patchouli.md)
@@ -81,9 +95,10 @@
 
 - [测试内容](./ceri.md)
 
+---
 
 
-<!-- # 写作与部署 | Writing and Deployment -->
+# 写作与部署 | Writing and Deployment
 
 - [mdBook](./technique/mdbook.md)
   - [mdbook部署流程 | Deployment Process](./technique/mdbookDeployment%20Process.md)

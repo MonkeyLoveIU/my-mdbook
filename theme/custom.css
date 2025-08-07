@@ -179,3 +179,31 @@ details.note summary:hover {
   color: #00acc1;
   transition: color 0.2s ease;
 }
+
+
+
+
+/* === 夜间模式专用霓虹呼吸分隔线 === */
+.theme-separator-dark {
+  border: none;
+  height: 4px;
+  margin: 3rem 0;
+  background: linear-gradient(90deg, #00f0ff, #a200ff, #00f0ff);
+  border-radius: 3px;
+  box-shadow:
+    0 0 8px #00f0ff,
+    0 0 16px #a200ff,
+    0 0 24px rgba(0, 240, 255, 0.6);
+  animation: glow-pulse 2s infinite ease-in-out;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1.2);
+  }
+  50% {
+    opacity: 0.6;
+    filter: brightness(1.6);
+  }
+}
