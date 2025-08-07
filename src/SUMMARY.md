@@ -16,6 +16,18 @@
 - [人生规划 | Life Planning](planning.md)
 - [年度计划 | Year Plan](year-plan.md)
 
+
+
+
+---
+
+
+# 日记 | Diary
+
+- [一](Diary.one.md)
+
+
+
 ---
 
 # 生活碎笔 | Life Traveling
@@ -71,7 +83,6 @@
 
 # AI篇
 
-<div class="theme-separator-dark"></div>
 
 ---
 
