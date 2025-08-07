@@ -5,6 +5,12 @@ src = "src"
 title = "朕 的 回 忆 录"
 
 
+
+
+[output.html.fold]
+enable = true
+
+
 [output.html]
 [preprocessor.katex]
 default-theme = "navy"  # 启用深色主题，默认是 light
