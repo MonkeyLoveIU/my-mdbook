@@ -5,28 +5,28 @@
 
 
 
-# 简介 | Intro | プロフ | préface
+<!-- # 简介 | Intro | プロフ | préface -->
 
 
-# 博客阅读指南 | Blog Reading Guide
+<!-- # 博客阅读指南 | Blog Reading Guide -->
 
 - [博客阅读指南](blog-reading.md)
 - [梦想清单 | Dream List](dream-list.md)
 - [人生规划 | Life Planning](planning.md)
 - [年度计划 | Year Plan](year-plan.md)
 
-# 生活碎笔 | Life Traveling
-
----
-
-- [个人感触 | Feelings](literature/feelings.md)
-- [胡言乱语 | Insanes](literature/insanes.md)
-- [小说 | Novels](literature/novels.md)
-
-# 大航海计划（学海计划） | Learning and Progressing
+<!-- # 生活碎笔 | Life Traveling -->
 
 
-## 专业课程
+
+- [个人感触 | Feelings](life/feelings.md)
+- [胡言乱语 | Insanes](life/insanes.md)
+- [小说 | Novels](life/novels.md)
+
+<!-- # 大航海计划（学海计划） | Learning and Progressing -->
+
+
+<!-- ## 专业课程 -->
 
 - [数学分析 | Mathematical Analysis](./Mathematical_Analysis/intro.md)
 
@@ -52,20 +52,18 @@
 
 
 
-## 编程语言
+<!-- ## 编程语言 -->
 
-- [python]()
+- [python](./python.md/intro.md)
   - [pandas](./python.md/1.md)
 
 
 
 
-## AI
+<!-- ## AI -->
 
 
-- [机器学习]()
-  - []()
-  - []()
+- [机器学习](./ai/intro.md)
   - [KNN](./ai/KNN.md)
   - [距离度量](./ai/dist.md)
 
@@ -73,21 +71,19 @@
 - [学海计划 | Patchouli Project](learning/patchouli.md)
 - [计算机科学简入门指南 | Computer Science Guide](learning/cs-guide.md)
 
-- [心理学]()
-  - []()
+- [心理学 | Psychology](./Psychology/intro.md)
 
-- [文学]()
+- [文学 | Literature](./Literature/intro.md)
 
+
+- [阅读 | Reading ](./Reading/intro.md)
 
 
 - [测试内容](./ceri.md)
 
 
 
-# 写作与部署 | Writing and Deployment
-
-
----
+<!-- # 写作与部署 | Writing and Deployment -->
 
 - [mdBook](./technique/mdbook.md)
   - [mdbook部署流程 | Deployment Process](./technique/mdbookDeployment%20Process.md)
