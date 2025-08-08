@@ -24,7 +24,7 @@
 
 # 日记 | Diary
 
-- [一](Diary.one.md)
+- [一](./Diary/one.md)
 
 
 
