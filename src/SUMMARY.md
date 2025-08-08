@@ -92,6 +92,15 @@
   - [距离度量](./ai/dist.md)
 
 
+
+- [腾讯云](./TX/intro.md)
+
+
+
+
+
+---
+
 - [各领域入门 | How to Learn](learning/intro.md)
 - [学海计划 | Patchouli Project](learning/patchouli.md)
 - [计算机科学简入门指南 | Computer Science Guide](learning/cs-guide.md)
@@ -105,6 +114,10 @@
 
 
 - [测试内容](./ceri.md)
+
+
+
+
 
 ---
 
