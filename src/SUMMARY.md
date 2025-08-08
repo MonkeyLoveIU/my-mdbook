@@ -94,8 +94,8 @@
 
 
 - [腾讯云](./TX/intro.md)
-
-
+  - [部署](./TX/deploy.md)
+  - [系统](./TX/ubuntu.md)
 
 
 
