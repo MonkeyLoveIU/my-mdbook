@@ -51,6 +51,9 @@
 
 
 - [胡言乱语 | Insanes](./life/insanes.md)
+  - [青春么](./life/one.md)
+
+
 - [小说 | Novels](./life/novels.md)
 
 ---
