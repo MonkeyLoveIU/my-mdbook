@@ -18,6 +18,9 @@
 
 
 
+# 回忆录 |
+
+
 
 ---
 
@@ -34,15 +37,18 @@
 
 
 
-- [个人感触 | Feelings](life/feelings.md)
-- [胡言乱语 | Insanes](life/insanes.md)
-- [小说 | Novels](life/novels.md)
+- [个人感触 | Feelings](./life/feelings.md)
+
+
+- [胡言乱语 | Insanes](./life/insanes.md)
+- [小说 | Novels](./life/novels.md)
 
 ---
 
 # 大航海计划（学海计划） | Learning and Progressing
+ - [误闯天家](./Trespassed/Trespassed.md)
 ---
-
+ 
 
 # 专业课程篇
 
