@@ -67,28 +67,10 @@ table th, table td {
   width: 0%;
   transition: width 0.1s ease-out;
 }
-
 /* === 正文段落居中排版 === */
 section.chapter p {
   text-align: center;
 }
-
-/* === 固定导航栏 ===
-nav.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  overflow-y: auto;
-  z-index: 1000;
-}
-
-/* === 增加正文宽度，并留出导航栏位置 === */
-/* section.chapter {
-  max-width: 1000px !important;
-  margin-left: 320px;
-  padding: 2rem;
-} */ */
 
 /* 固定左侧导航栏，并设置宽度 */
 nav.sidebar {
@@ -96,18 +78,53 @@ nav.sidebar {
   top: 0;
   left: 0;
   height: 100%;
-  width: 220px;  /* ✅ 控制导航栏宽度 */
+  width: 280px;  /* ✅ 左侧导航栏宽度 */
   overflow-y: auto;
   z-index: 1000;
 }
 
-/* 控制正文宽度 + 居中 + 避开导航栏 */
+/* 控制正文宽度 + 居中 + 避开导航栏 + 避开右侧目录 */
 section.chapter {
-  max-width: 1000px !important;
-  margin-left: 240px; /* ✅ 导航栏宽度+间距 */
+  max-width: 980px !important;
+  margin-left: 3000px;  /* ✅ 左边留出导航栏宽度+间距 */
+  margin-right: 260px; /* ✅ 右边留出目录宽度+间距 */
   padding: 2rem;
   line-height: 1.8;
   font-size: 17px;
+}
+
+/* 右侧目录容器 */
+.sidetoc {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.pagetoc {
+  position: fixed;
+  top: var(--menu-bar-height, 0);
+  right: 20px;  /* ✅ 距离右边 20px */
+  width: 220px; /* ✅ 目录宽度 */
+  height: calc(100vh - var(--menu-bar-height, 0) - 2rem);
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+/* 目录样式 */
+.pagetoc a {
+  border-left: 1px solid var(--sidebar-bg, #333);
+  color: var(--fg, #e0e0e0) !important;
+  display: block;
+  padding: 5px 10px;
+  text-align: left;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.pagetoc a:hover,
+.pagetoc a.active {
+  background: var(--sidebar-bg, #333);
+  color: var(--sidebar-fg, #fff) !important;
 }
 
 /* 不要再让 body 设置宽度和居中 */
@@ -118,10 +135,6 @@ body {
   font-size: 17px;
   background-color: #1e1e2f;
 }
-
-
-
-
 
 
 

@@ -4,15 +4,14 @@ language = "en"
 src = "src"
 title = "朕 的 回 忆 录"
 
-
-
-
 [output.html.fold]
 enable = true
 
-
-[output.html]
 [preprocessor.katex]
 default-theme = "navy"  # 启用深色主题，默认是 light
-additional-css = ["theme/custom.css"]
-additional-js = ["theme/extra.js"]  # 进度条
+
+[preprocessor.pagetoc]
+
+[output.html]
+additional-css = ["theme/custom.css", "theme/pagetoc.css"]
+additional-js  = ["theme/extra.js", "theme/pagetoc.js"]

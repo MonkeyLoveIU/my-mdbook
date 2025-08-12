@@ -20,15 +20,15 @@
 
 # 回忆录 | Memoir
 
-- [小学篇 | The Primary School Years](../Memoir/The-Primary-School-Years/intro.md)
+- [小学篇 | The Primary School Years](./Memoir/The-Primary-School-Years/intro.md)
 
-- [初中篇 | The Middle School Years](../Memoir/The-Middle-School-Years/intro.md)
+- [初中篇 | The Middle School Years](./Memoir/The-Middle-School-Years/intro.md)
 
-- [高中篇 | The High School Years](../Memoir/The-High-School-Years/intro.md)
+- [高中篇 | The High School Years](./Memoir/The-High-School-Years/intro.md)
 
-- [大学篇 | The University Years](../Memoir/The-University-Years/intro.md)
+- [大学篇 | The University Years](./Memoir/The-University-Years/intro.md)
 
-- [家庭篇 | Family and Home](../Memoir/Family-and-Home/intro.md)
+- [家庭篇 | Family and Home](./Memoir/Family-and-Home/intro.md)
 
 
 
@@ -61,18 +61,25 @@
 # 大航海计划（学海计划） | Learning and Progressing
  - [误闯天家](./Trespassed/Trespassed.md)
 ---
- 
+
+
+# 吉米多维奇
+
+- [数学分析习题集](./Demidovich/Mathematical_Analysis/intro.md)
+  - [第一章 | 分析引论](./Demidovich/Mathematical_Analysis/Chapter-one/intro.md)
+    - [第一节](./Demidovich/Mathematical_Analysis/Chapter-one/Section_1-1.md)
+
+
 
 # 专业课程篇
 
-- [数学分析 | Mathematical Analysis](./Mathematical_Analysis/intro.md)
+- [数学分析 | Mathematical Analysis](.Mathematical_Analysis/intro.md)
 
 
 - [高等代数 | Advanced Algebra](./Advanced_Algebra/intro.md)
 
 
 - [解析几何 | Analytic Geometry](./Analytic_Geometry/intro.md)
-
 
 - [概率论与数理统计 | Probability Theory and Mathematical Statistics](./Probability_Theory_and_Mathematical_Statistics/intro.md)
 
