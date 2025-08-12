@@ -1,0 +1,415 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>腾讯云 - 朕 的 回 忆 录</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom.css">
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">朕 的 回 忆 录</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="deepseek-r1"><a class="header" href="#deepseek-r1">Deepseek R1</a></h1>
+<h2 id="一概述"><a class="header" href="#一概述">一、概述</a></h2>
+<p>欢迎使用 Cloud Studio DeepSeek 工作空间！我们已为您预装并启动了以下服务，等待加载十几秒即可查看效果：</p>
+<ul>
+<li><strong>Ollama 服务</strong>：支持通过 API 调用 DeepSeek 模型。</li>
+<li><strong>AnythingLLM 前端服务</strong>：提供交互式聊天界面，支持知识库上传并基于知识库进行问答。</li>
+<li><strong>Open WebUI 前端服务</strong>：提供交互式聊天界面，支持上传文件作为上下文进行问答。</li>
+<li><strong>预装模型</strong>：
+<ul>
+<li><code>DeepSeek-R1-Distill-Qwen-1.5B</code>：适合轻量级任务，如简单文本生成、基础问答和低资源设备上的应用。</li>
+<li><code>DeepSeek-R1-Distill-Qwen-7B</code>：适合中等复杂度任务，如文本摘要、翻译、对话生成和内容创作。</li>
+<li><code>DeepSeek-R1-Distill-Llama-8B</code>：与7B类似，性能略有提升，适合更复杂的文本生成和理解任务。</li>
+<li><code>DeepSeek-R1-Distill-Qwen-14B</code>：适合高复杂度任务，如长文本生成、深度问答、知识推理和高级对话系统。</li>
+<li><code>DeepSeek-R1-Distill-Qwen-32B</code>：适合高精度任务，如复杂推理、大规模知识库问答、专业领域内容生成和研究级应用。</li>
+</ul>
+</li>
+</ul>
+<h2 id="二使用教程"><a class="header" href="#二使用教程">二、使用教程</a></h2>
+<p>您可以通过 Open WebUI、通过 AnythingLLM 管理知识库并对话、通过命令行调用模型、使用Ollama 原生命令对话。</p>
+<h3 id="一通过-open-webui-快速体验"><a class="header" href="#一通过-open-webui-快速体验">一、通过 Open WebUI 快速体验</a></h3>
+<p>我们提供了一个开箱即用的聊天界面，您可以直接通过浏览器与模型交互。点击红框区域，即可新页面打开聊天页面。</p>
+<img title="" src="img\open1.png" alt="" width="500">
+<h4 id="操作步骤"><a class="header" href="#操作步骤">操作步骤：</a></h4>
+<ol>
+<li>
+<p><strong>访问 Chat UI</strong><br />
+当前环境已配置为默认启动该服务，可直接访问。如果希望修改启动命令，可以前往<a href=".vscode/preview.yml">.vscode/preview.yml</a>修改。</p>
+</li>
+<li>
+<p><strong>选择模型</strong><br />
+在界面右上角的下拉菜单中，选择想要用的模型。</p>
+<img title="" src="img\open3.png" alt="" width="500">
+</li>
+<li>
+<p><strong>开始对话</strong><br />
+输入问题或指令，点击「发送」即可获取模型回复。</p>
+</li>
+</ol>
+<h3 id="二通过-anythingllm-管理知识库并对话"><a class="header" href="#二通过-anythingllm-管理知识库并对话">二、通过 AnythingLLM 管理知识库并对话</a></h3>
+<p>我们提供了一个开箱即用的聊天界面，您可以直接通过浏览器与模型交互。等待页面加载完成即可查看到下图中的界面。点击红框区域，即可新页面打开聊天页面。并点击<code>New Workspace</code>创建工作区</p>
+<img title="" src="img\openInBrowser.png" alt="" width="500">
+<p>如没有看到预览页面，可按数字点击下方按钮，即可看到预览页面。</p>
+<img title="" src="img\open2.png" alt="" width="500">
+<h4 id="操作步骤-1"><a class="header" href="#操作步骤-1">操作步骤：</a></h4>
+<ol>
+<li>
+<p><strong>访问 Open WebUI</strong><br />
+当前环境已配置为默认启动该服务，可直接访问。如果希望修改启动命令，可以前往<a href=".vscode/preview.yml">.vscode/preview.yml</a>修改。</p>
+</li>
+<li>
+<p><strong>选择模型</strong><br />
+在界面右上角的下拉菜单中，选择 <code>deepseek-r1:1.5b</code> 或 <code>deepseek-r1:7b</code>。</p>
+</li>
+<li>
+<p><strong>开始对话</strong><br />
+输入问题或指令，点击「发送」即可获取模型回复。</p>
+<img title="" src="img\anything1.png" alt="" width="500">
+</li>
+<li>
+<p><strong>上传知识库</strong><br />
+点击<code>Upload</code>按钮，选择本地文件，即可上传知识库。</p>
+<img title="" src="img\anything2.png" alt="" width="200">
+<img title="" src="img\anything5.png" alt="" width="500">
+</li>
+</ol>
+<blockquote>
+<p>需注意,该浏览地址仅在当前工作空间内有效,如果关闭工作空间,则无法访问。所以请保持当前编辑器标签页，不要关闭。</p>
+</blockquote>
+<h4 id="常见问题"><a class="header" href="#常见问题">常见问题：</a></h4>
+<ol>
+<li>
+<p><strong>修改系统语言</strong><br />
+点击<code>Settings</code>按钮，选择<code>Language</code>，即可修改系统语言。</p>
+<img title="" src="img\anything3.png" alt="" width="500">
+<img title="" src="img\anything4.png" alt="" width="500">
+</li>
+<li>
+<p><strong>在其他设备打开</strong><br />
+复制链接地址并打开。也可hover下方红框处并扫码，即可在移动端打开</p>
+<img title="" src="img\anything6.png" alt="" width="400">
+</li>
+</ol>
+<hr />
+<h3 id="三通过命令行调用模型"><a class="header" href="#三通过命令行调用模型">三、通过命令行调用模型</a></h3>
+<p>您可以使用 <code>curl</code> 直接与 Ollama 服务交互，适用于自动化任务或脚本调用。</p>
+<h4 id="基础请求示例"><a class="header" href="#基础请求示例">基础请求示例</a></h4>
+<h5 id="调用-deepseek-r115b"><a class="header" href="#调用-deepseek-r115b">调用 <code>deepseek-r1:1.5b</code></a></h5>
+<pre><code class="language-bash">curl -X POST http://localhost:8434/api/generate \
+     -H "Content-Type: application/json" \
+     -d '{
+           "model": "deepseek-r1:1.5b",
+           "prompt": "用一句话解释量子计算",
+           "stream": false
+         }'
+</code></pre>
+<h5 id="调用-deepseek-r17b"><a class="header" href="#调用-deepseek-r17b">调用 <code>deepseek-r1:7b</code></a></h5>
+<pre><code class="language-bash">curl -X POST http://localhost:8434/api/generate \
+     -H "Content-Type: application/json" \
+     -d '{
+           "model": "deepseek-r1:7b",
+           "prompt": "写一篇关于可再生能源的短文（200字）",
+           "stream": false
+         }'
+</code></pre>
+<h4 id="流式输出实时逐句返回"><a class="header" href="#流式输出实时逐句返回">流式输出（实时逐句返回）</a></h4>
+<p>将 <code>stream</code> 参数设为 <code>true</code>：</p>
+<pre><code class="language-bash">curl -X POST http://localhost:8434/api/generate \
+     -H "Content-Type: application/json" \
+     -d '{
+           "model": "deepseek-r1:7b",
+           "prompt": "详细说明如何训练一个神经网络",
+           "stream": true
+         }'
+</code></pre>
+<hr />
+<h3 id="四ollama-原生命令进阶使用"><a class="header" href="#四ollama-原生命令进阶使用">四、Ollama 原生命令进阶使用</a></h3>
+<p>除了 HTTP API，您还可以直接通过 <code>ollama</code> 命令行工具与模型交互。</p>
+<h4 id="1-查看已安装模型"><a class="header" href="#1-查看已安装模型">1. 查看已安装模型</a></h4>
+<pre><code class="language-bash">ollama list  
+</code></pre>
+<p>输出示例：</p>
+<pre><code>NAME                SIZE  
+deepseek-r1:1.5b    1.5B  
+deepseek-r1:7b      7B  
+</code></pre>
+<h4 id="2-启动交互式对话"><a class="header" href="#2-启动交互式对话">2. 启动交互式对话</a></h4>
+<pre><code class="language-bash">ollama run deepseek-r1:1.5b  
+</code></pre>
+<p>输入 <code>/bye</code>或者点击 <code>Ctrl + D</code> 退出对话。</p>
+<p><strong>示例对话流程</strong>：</p>
+<pre><code>&gt;&gt;&gt; 推荐一个适合初学者的机器学习项目  
+DeepSeek: 一个手写数字识别系统是一个不错的入门项目，可以使用MNIST数据集和Python的scikit-learn库快速实现...  
+
+&gt;&gt;&gt; 如何评估模型性能？  
+DeepSeek: 常用方法包括划分训练集/测试集、交叉验证、计算准确率/精确率/召回率等指标...  
+
+&gt;&gt;&gt; /bye  
+</code></pre>
+<h4 id="3-模型管理"><a class="header" href="#3-模型管理">3. 模型管理</a></h4>
+<div class="table-wrapper"><table><thead><tr><th>命令</th><th>说明</th></tr></thead><tbody>
+<tr><td><code>ollama pull deepseek-r1:7b</code></td><td>重新拉取模型（更新时使用）</td></tr>
+<tr><td><code>ollama rm deepseek-r1:7b</code></td><td>删除模型</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h4 id="4-切换模型"><a class="header" href="#4-切换模型">4. 切换模型</a></h4>
+<p>如需切换到7B模型，可在退出当前进程后再次输入以下代码即可：</p>
+<pre><code class="language-bash">ollama run deepseek-r1:7b
+</code></pre>
+<p>注意：当前机器为CPU，7B模型推理速度较慢，建议使用1.5B模型。更大参数模型建议使用HAI进阶型。</p>
+<h2 id="三常见问题"><a class="header" href="#三常见问题">三、常见问题</a></h2>
+<h3 id="1-查看预览"><a class="header" href="#1-查看预览">1. 查看预览</a></h3>
+<p>如需了解更多使用内置web预览的介绍，可参考文档：<a href="https://cloud.tencent.com/document/product/1039/72032">Cloud Studio（云端 IDE）操作指南-在线预览调试-文档中心-腾讯云</a></p>
+<h3 id="2-端口占用"><a class="header" href="#2-端口占用">2. 端口占用</a></h3>
+<p>如果需要释放端口，关闭某个进程，可以通过下述命令查看端口占用情况：</p>
+<pre><code class="language-bash">lsof -i -P -n
+</code></pre>
+<p>再使用下述命令关闭进程：</p>
+<pre><code class="language-bash">kill -9 &lt;进程ID&gt;
+</code></pre>
+<h3 id="3-空间不足"><a class="header" href="#3-空间不足">3. 空间不足</a></h3>
+<p>如右下角提示空间不足，可点击右下角的“2核4G”，选择“旗舰型”，即可升级空间。</p>
+<img title="" src="img\update.png" alt="" width="259">
+<h3 id="4-免费版工作空间时长用完如何继续使用"><a class="header" href="#4-免费版工作空间时长用完如何继续使用">4. 免费版工作空间时长用完如何继续使用?</a></h3>
+<p>免费版主要用于帮助用户体验产品功能，暂不支持续费。可等待下个月再次发放时长后继续使用。</p>
+<h2 id="三相关文档与资源"><a class="header" href="#三相关文档与资源">三、相关文档与资源</a></h2>
+<p>（1）Deepseek 官方介绍文档：
+<a href="https://github.com/deepseek-ai/DeepSeek-R1">GitHub - deepseek-ai/DeepSeek-R1</a></p>
+<p>（2）Ollama 官方介绍文档：
+<a href="https://github.com/ollama/ollama">GitHub - ollama/ollama</a></p>
+<p>（3）Cloud Studio操作指南：
+<a href="https://cloud.tencent.com/document/product/1039">Cloud Studio（云端 IDE）操作指南-文档中心-腾讯云</a></p>
+<h2 id="四更多帮助和支持"><a class="header" href="#四更多帮助和支持">四、更多帮助和支持</a></h2>
+<h3 id="欢迎加入cloud-studio用户反馈群"><a class="header" href="#欢迎加入cloud-studio用户反馈群">欢迎加入Cloud Studio用户反馈群</a></h3>
+<p>当您遇到问题需要处理时，您可以直接通过到扫码进入Cloud Studio用户群进行提问.</p>
+<ul>
+<li>腾讯云工程师实时群内答疑</li>
+<li>扫码入群可先享受产品上新功能</li>
+<li>更多精彩活动群内优享</li>
+</ul>
+<img title="" src="img\image.png" alt="" width="259">
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../ai/dist.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../TX/deploy.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../ai/dist.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../TX/deploy.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/extra.js"></script>
+        <script src="../theme/pagetoc.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

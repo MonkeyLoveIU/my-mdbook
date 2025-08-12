@@ -1,0 +1,30 @@
+[33m9a23572[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: reset: moving to origin/main
+[33m84fd70f[m HEAD@{1}: commit: updata css
+[33m9a23572[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{2}: commit: add feeling
+[33m34985f0[m HEAD@{3}: commit: add Memoir
+[33mbc3a18b[m HEAD@{4}: commit: add Trespassed into the imperial palace by mistake
+[33m594db21[m HEAD@{5}: commit: add TX
+[33m23a64a7[m HEAD@{6}: commit: add TX
+[33md9a6820[m HEAD@{7}: commit: add diary 1
+[33m2479dfb[m HEAD@{8}: commit: add Diary
+[33m9fd0bc4[m HEAD@{9}: commit: updata
+[33m7d86cc2[m HEAD@{10}: commit: updata book.toml
+[33md2d6b37[m HEAD@{11}: commit: add some
+[33mb730950[m HEAD@{12}: commit: updata SUMMARY
+[33m4ebf707[m HEAD@{13}: commit: updata technique
+[33m4ee6afd[m HEAD@{14}: commit: updata deploy.yml,- latex
+[33m85823bd[m HEAD@{15}: commit: updata deploy.yml
+[33mb9e64f7[m HEAD@{16}: rebase (abort): returning to refs/heads/main
+[33m4256a5d[m HEAD@{17}: pull --rebase origin main (pick): add Mathematical_Analysis
+[33maffbb33[m HEAD@{18}: pull --rebase origin main (start): checkout affbb33546f212292c899ea19d982db60adbd9e9
+[33mb9e64f7[m HEAD@{19}: commit: 保存当前修改，准备拉取远程更新
+[33m35e6f7e[m HEAD@{20}: commit: add Mathematical_Analysis
+[33me804c66[m HEAD@{21}: reset: moving to HEAD~1
+[33ma5f6588[m HEAD@{22}: commit: add mathematical_analysis
+[33me804c66[m HEAD@{23}: commit: 更新脚本
+[33m74f24d7[m HEAD@{24}: commit: add time
+[33ma8ebcfc[m HEAD@{25}: commit: Add technique and update SUMMARY.md
+[33mc381c52[m HEAD@{26}: commit: update intro and update SUMMARY.md
+[33m1cf11ae[m HEAD@{27}: commit: Fix GitHub Actions deploy.yml configuration
+[33m5d5017e[m HEAD@{28}: commit: 添加自动部署 workflow
+[33mc723dac[m HEAD@{29}: commit (initial): initial

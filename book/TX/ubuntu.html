@@ -1,0 +1,543 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>系统 - 朕 的 回 忆 录</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom.css">
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">朕 的 回 忆 录</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<p><code>apt install neofetch</code> 是一条在 <strong>Debian / Ubuntu / 及其衍生发行版</strong> 的 Linux 系统中用来<strong>安装软件</strong>的命令。</p>
+<p>拆开解释：</p>
+<ol>
+<li>
+<p><strong><code>apt</code></strong></p>
+<ul>
+<li>这是 Ubuntu/Debian 系列系统的包管理工具（Advanced Package Tool）。</li>
+<li>用来安装、更新、卸载、搜索软件包。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>install</code></strong></p>
+<ul>
+<li><code>apt</code> 的一个子命令，意思是“安装”。</li>
+<li>格式：<code>apt install &lt;软件名&gt;</code>。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>neofetch</code></strong></p>
+<ul>
+<li>一个终端工具，用来<strong>在命令行显示系统信息</strong>，并配合漂亮的 ASCII 发行版 logo。</li>
+<li>它会显示操作系统版本、内核、CPU、内存、桌面环境等信息。</li>
+<li>常用于截图或炫酷的系统展示。</li>
+</ul>
+</li>
+</ol>
+<p>执行时流程：</p>
+<pre><code class="language-bash">apt install neofetch
+</code></pre>
+<p>系统会：</p>
+<ol>
+<li>从软件源里找到 <code>neofetch</code> 软件包。</li>
+<li>下载它和依赖文件。</li>
+<li>安装到系统中。</li>
+</ol>
+<p>安装后运行：</p>
+<pre><code class="language-bash">neofetch
+</code></pre>
+<h2>就能看到一个彩色的系统信息界面。
+<img src="image/ubuntu.png" alt="alt text" /></h2>
+<details>
+  <summary>点击展开 / 折叠：系统信息介绍</summary>
+<h1 id="这张截图是什么概述"><a class="header" href="#这张截图是什么概述">这张截图是什么（概述）</a></h1>
+<p>你贴出的图片是 <strong><code>neofetch</code></strong> 的输出 —— 一个用来在终端快速展示系统信息的工具。左边是发行版的 ASCII logo（这里是 Ubuntu 的标志），右侧按行列出了主机名、操作系统、内核、CPU、内存等关键信息，并在底部显示了终端颜色调色板。</p>
+<p>下面我把每一行/每一项逐条拆开，详细解释含义、如何验证来源，以及常用的扩展命令与排查建议。</p>
+<hr />
+<h1 id="逐项详解"><a class="header" href="#逐项详解">逐项详解</a></h1>
+<h3 id="顶部rootvm-14-154-ubuntu"><a class="header" href="#顶部rootvm-14-154-ubuntu">顶部：<code>root@VM-14-154-ubuntu</code></a></h3>
+<ul>
+<li>
+<p><strong>含义</strong>：当前登录用户和主机名。<code>root</code> 表示你以超级用户身份登录；<code>VM-14-154-ubuntu</code> 是主机名。</p>
+</li>
+<li>
+<p><strong>如何查</strong>：</p>
+<pre><code class="language-bash">whoami        # 当前用户名
+hostname      # 主机名
+</code></pre>
+</li>
+</ul>
+<h3 id="os-ubuntu-20046-lts-x86_64"><a class="header" href="#os-ubuntu-20046-lts-x86_64"><code>OS: Ubuntu 20.04.6 LTS x86_64</code></a></h3>
+<ul>
+<li>
+<p><strong>含义</strong>：操作系统及版本（Ubuntu 20.04.6 LTS），体系结构为 64 位（x86_64）。</p>
+</li>
+<li>
+<p><strong>如何查</strong>：</p>
+<pre><code class="language-bash">cat /etc/os-release
+lsb_release -a
+</code></pre>
+</li>
+</ul>
+<h3 id="host-cvm-30"><a class="header" href="#host-cvm-30"><code>Host: CVM 3.0</code></a></h3>
+<ul>
+<li>
+<p><strong>含义</strong>：厂商/主机类型，<code>CVM</code> 常见于云厂商（Cloud Virtual Machine）表示这是云主机/虚拟机。具体厂商信息可不同云上显示不同标识。</p>
+</li>
+<li>
+<p><strong>如何查</strong>：</p>
+<pre><code class="language-bash">sudo dmidecode -s system-product-name   # 需 root，可能返回云厂商/型号
+hostnamectl
+</code></pre>
+</li>
+</ul>
+<h3 id="kernel-540-166-generic"><a class="header" href="#kernel-540-166-generic"><code>Kernel: 5.4.0-166-generic</code></a></h3>
+<ul>
+<li>
+<p><strong>含义</strong>：Linux 内核版本。</p>
+</li>
+<li>
+<p><strong>如何查</strong>：</p>
+<pre><code class="language-bash">uname -r
+uname -a
+</code></pre>
+</li>
+</ul>
+<h3 id="uptime-5-hours-23-mins"><a class="header" href="#uptime-5-hours-23-mins"><code>Uptime: 5 hours, 23 mins</code></a></h3>
+<ul>
+<li>
+<p><strong>含义</strong>：系统自上次启动以来运行时间（开机时长）。</p>
+</li>
+<li>
+<p><strong>如何查</strong>：</p>
+<pre><code class="language-bash">uptime
+</code></pre>
+</li>
+</ul>
+<h3 id="packages-436-dpkg"><a class="header" href="#packages-436-dpkg"><code>Packages: 436 (dpkg)</code></a></h3>
+<ul>
+<li>
+<p><strong>含义</strong>：系统已安装软件包数量（这里用的是 Debian/Ubuntu 的 <code>dpkg</code> 包管理器统计）。</p>
+</li>
+<li>
+<p><strong>如何查</strong>：</p>
+<pre><code class="language-bash">dpkg -l | wc -l
+# 或 apt:
+apt list --installed | wc -l
+</code></pre>
+</li>
+</ul>
+<h3 id="shell-bash-5017"><a class="header" href="#shell-bash-5017"><code>Shell: bash 5.0.17</code></a></h3>
+<ul>
+<li>
+<p><strong>含义</strong>：当前使用的 shell 及其版本。</p>
+</li>
+<li>
+<p><strong>如何查</strong>：</p>
+<pre><code class="language-bash">echo $SHELL
+bash --version
+</code></pre>
+</li>
+</ul>
+<h3 id="resolution-1024x768"><a class="header" href="#resolution-1024x768"><code>Resolution: 1024x768</code></a></h3>
+<ul>
+<li>
+<p><strong>含义</strong>：当前显示/终端的分辨率（对于远程/VSCode 终端通常是虚拟分辨率）。</p>
+</li>
+<li>
+<p><strong>如何查（图形环境）</strong>：</p>
+<pre><code class="language-bash">xdpyinfo | grep dimensions   # 需要 X 环境
+</code></pre>
+</li>
+</ul>
+<h3 id="terminal-vscode"><a class="header" href="#terminal-vscode"><code>Terminal: vscode</code></a></h3>
+<ul>
+<li><strong>含义</strong>：neofetch 检测到你是在 <strong>VS Code</strong> 的集成终端里运行（通常是通过 Remote - SSH 打开的终端）。</li>
+</ul>
+<h3 id="cpu-intel-xeon-platinum-8255c-8--2494ghz"><a class="header" href="#cpu-intel-xeon-platinum-8255c-8--2494ghz"><code>CPU: Intel Xeon Platinum 8255C (8) @ 2.494GHz</code></a></h3>
+<ul>
+<li>
+<p><strong>含义</strong>：CPU 型号与频率。括号中的数字（<code>(8)</code>）表示 neofetch 检测到的核心数（可能是逻辑核心或物理核心，依系统而异）。</p>
+</li>
+<li>
+<p><strong>如何查看更详细信息</strong>：</p>
+<pre><code class="language-bash">lscpu
+cat /proc/cpuinfo | grep "model name" -m1
+</code></pre>
+<p><code>lscpu</code> 会显示 <code>CPU(s):</code>（逻辑核数）、<code>Core(s) per socket</code>、<code>Thread(s) per core</code> 等字段，帮助你区分物理核与线程。</p>
+</li>
+</ul>
+<h3 id="memory-4566mib--31331mib"><a class="header" href="#memory-4566mib--31331mib"><code>Memory: 4566MiB / 31331MiB</code></a></h3>
+<ul>
+<li>
+<p><strong>含义</strong>：当前使用的内存 / 总内存，以 MiB（Mebibyte）为单位。</p>
+</li>
+<li>
+<p><strong>换算成 GiB（更直观）</strong>：按 1 GiB = 1024 MiB 计算：</p>
+<ul>
+<li><code>4566 MiB ≈ 4.46 GiB</code>（计算：4566 ÷ 1024 = 4 + 470/1024 ≈ 4.459）</li>
+<li><code>31331 MiB ≈ 30.60 GiB</code>（计算：31331 ÷ 1024 = 30 + 611/1024 ≈ 30.596）
+所以约 <strong>4.46 GiB / 30.60 GiB</strong>（已用 / 总量）。</li>
+</ul>
+</li>
+<li>
+<p><strong>如何查</strong>：</p>
+<pre><code class="language-bash">free -h
+cat /proc/meminfo
+</code></pre>
+</li>
+</ul>
+<h3 id="底部颜色块16-色"><a class="header" href="#底部颜色块16-色">底部：颜色块（16 色）</a></h3>
+<ul>
+<li><strong>含义</strong>：neofetch 显示当前终端的 16 色调色板（颜色 0–15）。用于检查主题/配色是否正确。</li>
+</ul>
+<hr />
+<h1 id="为什么-neofetch-有用"><a class="header" href="#为什么-neofetch-有用">为什么 neofetch 有用</a></h1>
+<ul>
+<li><strong>快速一览</strong>：在终端打开时即可看到系统概况，方便截图或诊断（例如你发图给别人求助时）。</li>
+<li><strong>可配置</strong>：可以自定义显示哪些信息、替换 ASCII logo、在登录时自动运行等。</li>
+<li><strong>轻量</strong>：只读系统信息，不会改变任何设置。</li>
+</ul>
+<hr />
+<h1 id="常用扩展命令排查获取更多硬件信息"><a class="header" href="#常用扩展命令排查获取更多硬件信息">常用扩展命令（排查/获取更多硬件信息）</a></h1>
+<ul>
+<li>
+<p><strong>查看显卡（如果有 NVIDIA）</strong>：</p>
+<pre><code class="language-bash">nvidia-smi
+lspci | grep -i nvidia
+</code></pre>
+</li>
+<li>
+<p><strong>查看磁盘与分区</strong>：</p>
+<pre><code class="language-bash">df -h
+lsblk
+sudo fdisk -l
+</code></pre>
+</li>
+<li>
+<p><strong>实时监控 CPU / 内存</strong>：</p>
+<pre><code class="language-bash">top
+htop    # 更友好（需安装: apt install htop）
+glances # 更全（需安装）
+</code></pre>
+</li>
+<li>
+<p><strong>查看已安装包的详细来源</strong>（Debian/Ubuntu）：</p>
+<pre><code class="language-bash">dpkg -l | less
+</code></pre>
+</li>
+</ul>
+<hr />
+<h1 id="常见自定义与小技巧"><a class="header" href="#常见自定义与小技巧">常见自定义与小技巧</a></h1>
+<ul>
+<li>
+<p><strong>安装 neofetch（Ubuntu/Debian）</strong>：</p>
+<pre><code class="language-bash">sudo apt update
+sudo apt install neofetch
+</code></pre>
+</li>
+<li>
+<p><strong>登录时自动显示</strong>：在 <code>~/.bashrc</code> 或 <code>~/.profile</code> 最后加一行：</p>
+<pre><code class="language-bash">neofetch
+</code></pre>
+</li>
+<li>
+<p><strong>配置文件位置</strong>：<code>~/.config/neofetch/config.conf</code>（在此修改要显示/隐藏的字段、logo、格式等）。</p>
+</li>
+<li>
+<p><strong>让 neofetch 显示额外信息</strong>：编辑 <code>config.conf</code> 中的 <code>info</code> 列表（例如加入 <code>gpu</code>、<code>disk</code> 等条目）。</p>
+</li>
+</ul>
+<hr />
+<h1 id="小结--建议"><a class="header" href="#小结--建议">小结 &amp; 建议</a></h1>
+<ul>
+<li>你的机器是 <strong>云主机（CVM）</strong>，运行 <strong>Ubuntu 20.04</strong>，CPU 为 <strong>Intel Xeon Platinum 8255C</strong>，内存约 <strong>31.3 GiB</strong>（当前使用 ~4.5 GiB），并在 <strong>VS Code 的终端</strong> 中运行 neofetch。</li>
+</ul>
+</details>
+<p>在终端运行 nvidia-smi 会出现GPU信息界面</p>
+<p><img src="image/GPU.png" alt="alt text" /></p>
+<details>
+  <summary>点击展开 / 折叠：GPU状态信息</summary>
+<p>这张图显示的是在终端运行 <code>nvidia-smi</code> 的结果，意思是查看显卡（NVIDIA GPU）的状态信息。</p>
+<hr />
+<h3 id="第一行"><a class="header" href="#第一行"><strong>第一行</strong></a></h3>
+<pre><code>Fri Aug  8 11:57:29 2025
+</code></pre>
+<p>当前系统时间。</p>
+<hr />
+<h3 id="驱动和-cuda-信息"><a class="header" href="#驱动和-cuda-信息"><strong>驱动和 CUDA 信息</strong></a></h3>
+<pre><code>NVIDIA-SMI 525.105.17    Driver Version: 525.105.17    CUDA Version: 12.4
+</code></pre>
+<ul>
+<li><strong>NVIDIA-SMI</strong>：NVIDIA 的命令行工具版本（这里是 525.105.17）。</li>
+<li><strong>Driver Version</strong>：显卡驱动版本（525.105.17）。</li>
+<li><strong>CUDA Version</strong>：CUDA 工具包版本（12.4），用于 GPU 加速计算。</li>
+</ul>
+<hr />
+<h3 id="gpu-设备信息"><a class="header" href="#gpu-设备信息"><strong>GPU 设备信息</strong></a></h3>
+<pre><code>GPU  Name        Persistence-M    Bus-Id        Disp.A     Volatile Uncorr. ECC
+Fan  Temp  Perf  Pwr:Usage/Cap    Memory-Usage  GPU-Util  Compute M.  MIG M.
+</code></pre>
+<p>对应下面这行数据：</p>
+<pre><code>0    Tesla T4    On              00000000:00:09.0  Off   0
+N/A  28C   P8    9W / 70W        4MiB / 15360MiB   0%     Default     N/A
+</code></pre>
+<p>解释：</p>
+<ul>
+<li><strong>GPU</strong>：编号，这台机器只有一张卡（<code>0</code>）。</li>
+<li><strong>Name</strong>：显卡型号（Tesla T4，一种服务器用 GPU）。</li>
+<li><strong>Persistence-M</strong>：<code>On</code> 表示持久化模式开启（节省初始化时间）。</li>
+<li><strong>Bus-Id</strong>：PCI 总线 ID（唯一标识 GPU 位置）。</li>
+<li><strong>Disp.A</strong>：显示器是否连接（Off 表示没接显示器）。</li>
+<li><strong>ECC</strong>：错误纠正码功能，这里是 <code>0</code>（关闭）。</li>
+</ul>
+<p>第二行：</p>
+<ul>
+<li><strong>Fan</strong>：风扇转速（N/A，因为 T4 是被动散热）。</li>
+<li><strong>Temp</strong>：温度（28°C）。</li>
+<li><strong>Perf</strong>：性能状态（P8，空闲状态）。</li>
+<li><strong>Pwr:Usage/Cap</strong>：功耗（9W / 70W 最大）。</li>
+<li><strong>Memory-Usage</strong>：显存使用（4 MiB / 15360 MiB，总共 15 GB）。</li>
+<li><strong>GPU-Util</strong>：GPU 利用率（0%，空闲）。</li>
+<li><strong>Compute M.</strong>：计算模式（Default，正常模式）。</li>
+<li><strong>MIG M.</strong>：多实例 GPU 模式（N/A，未启用）。</li>
+</ul>
+<hr />
+<h3 id="进程信息"><a class="header" href="#进程信息"><strong>进程信息</strong></a></h3>
+<pre><code>No running processes found
+</code></pre>
+<p>说明当前没有程序在用这块 GPU。</p>
+<hr />
+<p>💡 总结：</p>
+<ul>
+<li>你这台服务器有一块 <strong>Tesla T4</strong> 显卡（15 GB 显存）。</li>
+<li>驱动和 CUDA 都正常安装。</li>
+<li>GPU 当前几乎空闲（0% 利用率，4MiB 显存占用）。</li>
+<li>没有进程在使用 GPU。</li>
+</ul>
+</details>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../TX/deploy.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../learning/intro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../TX/deploy.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../learning/intro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/extra.js"></script>
+        <script src="../theme/pagetoc.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

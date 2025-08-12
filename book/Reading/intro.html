@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>阅读 | Reading  - 朕 的 回 忆 录</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom.css">
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">朕 的 回 忆 录</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<hr />
+<h1 id="年度阅读随想书本命运与内心的宁静"><a class="header" href="#年度阅读随想书本命运与内心的宁静">年度阅读随想：书本、命运与内心的宁静</a></h1>
+<blockquote>
+<p>“读书，是为了对抗虚无，是与无聊的生活握手言和的一种方式。”</p>
+</blockquote>
+<p>各位朋友好。今天想分享一段关于读书的随想，内容并不系统，也不完整，但希望对你有所启发。</p>
+<p>起因是有同学问我：今年读过什么书？我才想起，原本打算每个月做一次读书总结，写推文或拍个视频。结果不了了之，连这个“许诺”都快忘了。当然，也有可能是故意以“记忆力下降”作为借口——毕竟，人总会习惯性逃避责任。</p>
+<p>坦白说，我已经记不清这一年读了多少书了。很多时候，阅读只是为了驱赶内心的无聊，是一种“看似有意义”的自我安慰。苏格拉底曾说：“书籍是药物，既可为良方，也可成毒药。”阅读确实让人疲惫，有时甚至令人分心、焦躁。哲学家塞内卡提醒我们：读得太多，思维反而会混乱。</p>
+<p>读书若成炫耀，是无知的另一种表现。买买买与读读读，本质上都是用来对抗虚无的。你看，“读”字中间为什么藏了个“买”字？也许正说明了我们无法通过任何形式填补内心的空虚。</p>
+<p>读书不能让人变得高贵，炫耀读书则让人愚蠢。真正的阅读，是承认自己的有限，然后追求那遥不可及的“完美”。我们需要在信息与知识的海洋中找到锚点，而非漂浮不定。因为——脱离了对真理的追求，阅读最终只会加剧我们的浅薄与傲慢。</p>
+<p>愿所有热爱阅读的朋友，都能在书籍中找到真正的喜悦与宁静。</p>
+<hr />
+<h2 id="一文学类命运中的温柔光亮"><a class="header" href="#一文学类命运中的温柔光亮">一、文学类：命运中的温柔光亮</a></h2>
+<h3 id="1-井上靖孔子传"><a class="header" href="#1-井上靖孔子传">1. 井上靖《孔子传》</a></h3>
+<p>一本让我重新理解“尽人事，听天命”的书。书中的孔子并不是神圣的道德符号，而是一个血肉丰盈的普通人。一个曾向学生子路感慨“道不行，乘桴浮于海”的人。他也曾想过“躺平”，但依然坚守自己的使命。</p>
+<p>这本书让我意识到，真正的君子不是无懈可击，而是在困顿中依旧选择承担。</p>
+<h3 id="2-肖仁福苏东坡传"><a class="header" href="#2-肖仁福苏东坡传">2. 肖仁福《苏东坡传》</a></h3>
+<p>我在飞机上读完上半本，回家后一口气看完下半本。东坡是天才，但也是在苦难中绽放光芒的“生活家”。</p>
+<p>他教会我：哪怕无法成为天才，也可以学学他的“做菜手法”——爱生活，不是爱生活的意义；爱身边的人，不是爱抽象的人类。</p>
+<h3 id="3-王晓明无法直面的人生鲁迅传"><a class="header" href="#3-王晓明无法直面的人生鲁迅传">3. 王晓明《无法直面的人生：鲁迅传》</a></h3>
+<p>这是一本刻画鲁迅思想历程的作品。鲁迅并非天生坚强，他和我们一样，也有挣扎与虚无。他的伟大，正在于他明知“人生无法直面”，却仍旧选择正视它。</p>
+<h3 id="4-陈年喜微尘"><a class="header" href="#4-陈年喜微尘">4. 陈年喜《微尘》</a></h3>
+<p>一位矿工诗人的纪实文学。他曾患尘肺病，用自己的笔记录下工友的故事。我家乡也曾是尘肺病高发区，读这本书让我意识到：写作并非炫技，它更是一种“责任”。</p>
+<h3 id="5-蔡崇达命运"><a class="header" href="#5-蔡崇达命运">5. 蔡崇达《命运》</a></h3>
+<p>一本让我落泪的小说。让我想起多年前一位学生送我他上一本书，他当时正纠结于“该读法律还是追梦艺术”。如今不知他是否听到了命运的召唤。</p>
+<p>这本书让我再次感悟“尽人事，听天命”的意义：最关键的，是勇敢承担命运带来的责任——哪怕它总是突如其来，让人措手不及。</p>
+<hr />
+<h2 id="二历史类在时间深处反观当下"><a class="header" href="#二历史类在时间深处反观当下">二、历史类：在时间深处反观当下</a></h2>
+<h3 id="1-罗新漫长的余生"><a class="header" href="#1-罗新漫长的余生">1. 罗新《漫长的余生》</a></h3>
+<p>书中讲述一位北魏宫女的命运，以微观的方式揭示了权力的冷酷与制度的残忍。“子贵母死”制度令人唏嘘。出生在帝王之家，到底是幸运还是诅咒？</p>
+<h3 id="2-李硕简明"><a class="header" href="#2-李硕简明">2. 李硕《简明》</a></h3>
+<p>一本关于商朝人祭制度的系统研究。甲骨文中隐藏着许多“活人献祭”的痕迹。阅读这本书让我难以入眠，因其揭露的黑暗过于真实。</p>
+<p>孔子尊周礼，也许正是为避免先祖之恶重演。理解历史，也许才能真正理解我们身处的现在。</p>
+<h3 id="3-杨照史记的读法"><a class="header" href="#3-杨照史记的读法">3. 杨照《史记的读法》</a></h3>
+<p>我总想通读《史记》，却一直停留在“买书阶段”。这本“导读”激起了我再次阅读的欲望。太史公穷其一生，写下《史记》，正是为了“究天人之际，通古今之变”。</p>
+<hr />
+<h2 id="三哲学类因果与自我的追问"><a class="header" href="#三哲学类因果与自我的追问">三、哲学类：因果与自我的追问</a></h2>
+<p>哲学书看得不多，但每年总会读几本，或者在给学生办读书会时重温经典。</p>
+<p>最有趣的一本，是柏拉图的对话剧本《尤西弗伦》。故事围绕一个儿子起诉父亲误杀的案子，展开“敬神”与“正义”的哲学讨论。</p>
+<p>戏剧中的因果关系常常倒置。我们的人生亦是如此。我们以为的“原因”常常是“结果”，我们以为的“选择”其实是被动。</p>
+<p>哲学是人生的镜像，它逼我们回答三个问题：</p>
+<ul>
+<li>你是谁？</li>
+<li>你从哪来？</li>
+<li>你要去哪？</li>
+</ul>
+<hr />
+<h2 id="四杂项地理与记忆的边缘"><a class="header" href="#四杂项地理与记忆的边缘">四、杂项：地理与记忆的边缘</a></h2>
+<h3 id="1-法特兰中亚行记"><a class="header" href="#1-法特兰中亚行记">1. 法特兰《中亚行记》</a></h3>
+<p>一本让我认识“中亚五国”的旅行文学。读万卷书也要行千里路。这本书让我意识到：人类的偏见，常常源于“看得太少”。</p>
+<h3 id="2-莱维被淹没与被拯救的"><a class="header" href="#2-莱维被淹没与被拯救的">2. 莱维《被淹没与被拯救的》</a></h3>
+<p>反复读的一本书，关于集中营的回忆录。最堕落者往往是与你经历相同的人，而不是所谓的“他者”。困境之中，总有人被淹没，也总有人得以被拯救。</p>
+<p>正如孔子所说：“君子固穷，小人穷斯滥矣。”</p>
+<hr />
+<h2 id="结语书是命运的馈赠"><a class="header" href="#结语书是命运的馈赠">结语：书，是命运的馈赠</a></h2>
+<p>今年原本想总结十本书，结果越说越多，就当作是“十本左右”吧。也许阅读不是为了炫耀，而是为了在疲惫、迷茫与平庸之中，为心灵寻得一方清明。</p>
+<p>愿每位阅读的朋友，都能在文字中与命运相遇，在书页中找到自己的“定海神针”。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Literature/intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../ceri.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Literature/intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../ceri.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/extra.js"></script>
+        <script src="../theme/pagetoc.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

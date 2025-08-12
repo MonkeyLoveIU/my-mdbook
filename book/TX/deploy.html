@@ -1,0 +1,836 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>部署 - 朕 的 回 忆 录</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom.css">
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">朕 的 回 忆 录</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="云服务器上中文情感分类模型微调与部署全流程实战"><a class="header" href="#云服务器上中文情感分类模型微调与部署全流程实战">云服务器上中文情感分类模型微调与部署全流程实战</a></h1>
+<h2 id="目录"><a class="header" href="#目录">目录</a></h2>
+<ol>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D">项目介绍</a></li>
+<li><a href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87">环境准备</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87">数据准备</a></li>
+<li><a href="#%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83">模型微调</a></li>
+<li><a href="#gradio-%E5%89%8D%E7%AB%AF%E6%90%AD%E5%BB%BA">Gradio 前端搭建</a></li>
+<li><a href="#%E5%85%AC%E7%BD%91%E8%AE%BF%E9%97%AE%E4%B8%8E%E9%9A%A7%E9%81%93%E5%B7%A5%E5%85%B7-ngrok">公网访问与隧道工具 ngrok</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93%E4%B8%8E%E6%89%A9%E5%B1%95">总结与扩展</a></li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84">项目文件结构</a></li>
+</ol>
+<hr />
+<h2 id="项目介绍"><a class="header" href="#项目介绍">项目介绍</a></h2>
+<p>本项目旨在演示如何在腾讯云服务器上完成中文情感分类模型的微调和在线部署，涵盖从数据准备、模型训练、服务搭建到公网访问的完整技术流程。<br />
+核心技术栈包括 Huggingface Transformers、Datasets、Gradio 和 ngrok。</p>
+<hr />
+<h2 id="环境准备"><a class="header" href="#环境准备">环境准备</a></h2>
+<ul>
+<li>云服务器操作系统：Ubuntu 20.04</li>
+<li>Python 3.8 及以上版本</li>
+<li>依赖包安装命令：</li>
+</ul>
+<pre><code class="language-bash">apt update &amp;&amp; apt install -y python3 python3-pip git 
+
+
+# 安装 GPU 支持的深度学习框架
+
+# 以 PyTorch 为例（CUDA 12.4 对应版本）
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124 
+
+
+pip install transformers datasets accelerate
+
+
+
+
+---
+
+## 数据准备
+
+
+新建一个 `test_model.py`：
+
+```python
+from transformers import pipeline
+
+# 加载中文情感分析模型
+classifier = pipeline(
+    "sentiment-analysis",
+    model="uer/roberta-base-finetuned-jd-binary-chinese",
+    device=0  # GPU:0
+)
+
+# 测试几句话
+texts = [
+    "这个产品真的很好用！",
+    "我非常失望，质量太差了。",
+    "一般般，没有特别惊艳的地方。"
+]
+
+for t in texts:
+    print(t, "=&gt;", classifier(t))
+</code></pre>
+<p>运行：</p>
+<pre><code class="language-bash">python test_model.py
+</code></pre>
+<p>你会看到三句话分别被标注为积极（positive）或消极（negative）。</p>
+<p>这个产品真的很好用！ =&gt; [{'label': 'positive (stars 4 and 5)', 'score': 0.976917028427124}]
+model.safetensors:   5%|████▋                                                                                       | 21.0M/409M [00:01&lt;00:21, 18.3MB/s]我非常失望，质量太差了。 =&gt; [{'label': 'negative (stars 1, 2 and 3)', 'score': 0.9843776226043701}]
+一般般，没有特别惊艳的地方。 =&gt; [{'label': 'negative (stars 1, 2 and 3)', 'score': 0.5168154239654541}]
+model.safetensors: 100%|█████████████████████████████████████████████████████████████████████████████████████████████| 409M/409M [00:33&lt;00:00, 12.2MB/s]</p>
+<h2 id="模型微调"><a class="header" href="#模型微调">模型微调</a></h2>
+<p>我们进入 <strong>阶段 3：微调模型</strong>，一步步来。</p>
+<hr />
+<h2 id="-阶段-3微调中文情感分析模型"><a class="header" href="#-阶段-3微调中文情感分析模型"><strong>📌 阶段 3：微调中文情感分析模型</strong></a></h2>
+<h3 id="1-安装依赖"><a class="header" href="#1-安装依赖">1. 安装依赖</a></h3>
+<p>先安装 Hugging Face 训练所需工具：</p>
+<pre><code class="language-bash">pip install transformers datasets accelerate evaluate
+</code></pre>
+<hr />
+<h3 id="2-创建训练脚本-finetune_sentimentpy"><a class="header" href="#2-创建训练脚本-finetune_sentimentpy">2. 创建训练脚本 <code>finetune_sentiment.py</code></a></h3>
+<details>
+  <summary>代码</summary>
+<pre><code class="language-python">from datasets import Dataset
+import pandas as pd
+import evaluate
+import numpy as np
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, TrainingArguments, Trainer
+
+# 1. 读取 CSV 并转成 Dataset
+df = pd.read_csv("data/chnsenticorp.csv")  # 确保文件路径正确
+dataset = Dataset.from_pandas(df)
+
+# 2. 拆分数据集（80%训练，20%验证）
+split_dataset = dataset.train_test_split(test_size=0.2, seed=42)
+train_dataset = split_dataset["train"]
+eval_dataset = split_dataset["test"]
+
+# 3. 加载分词器和模型
+model_name = "uer/roberta-base-finetuned-jd-binary-chinese"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSequenceClassification.from_pretrained(model_name)
+
+# 4. 定义分词函数
+def preprocess_function(examples):
+    return tokenizer(examples["text"], truncation=True, padding="max_length", max_length=128)
+
+# 5. 对训练集和验证集做分词
+train_dataset = train_dataset.map(preprocess_function, batched=True)
+eval_dataset = eval_dataset.map(preprocess_function, batched=True)
+
+# 6. 加载评价指标
+accuracy = evaluate.load("accuracy")
+
+def compute_metrics(eval_pred):
+    logits, labels = eval_pred
+    predictions = np.argmax(logits, axis=-1)
+    return accuracy.compute(predictions=predictions, references=labels)
+
+# 7. 训练参数配置
+training_args = TrainingArguments(
+    output_dir="./results",
+    save_strategy="epoch",
+    learning_rate=2e-5,
+    per_device_train_batch_size=16,
+    per_device_eval_batch_size=16,
+    num_train_epochs=2,
+    weight_decay=0.01,
+    logging_dir="./logs",
+    logging_steps=50,
+    push_to_hub=False,
+    load_best_model_at_end=False,
+    fp16=True
+)
+
+# 8. 创建 Trainer 实例
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=train_dataset,
+    eval_dataset=eval_dataset,
+    tokenizer=tokenizer,
+    compute_metrics=compute_metrics
+)
+
+# 9. 开始训练
+trainer.train()
+
+# 10. 保存模型和分词器
+trainer.save_model("./my-chinese-sentiment")
+tokenizer.save_pretrained("./my-chinese-sentiment")
+
+print("✅ 训练完成，模型已保存到 ./my-chinese-sentiment")
+
+
+</code></pre>
+<p>运行：</p>
+<pre><code class="language-bash">python test_my_model.py
+</code></pre>
+</details>
+<p>执行 <strong>python finetune_sentiment.py</strong>报错</p>
+<details>
+  <summary>报错解释</summary>
+<p>你这个报错是因为 load_dataset("chnsenticorp") 会去 Hugging Face Hub 下载中文情感数据集，但服务器现在连不上 Hugging Face（要么是网络被墙，要么是没有设置访问 token）</p>
+</details>
+<p>解决办法</p>
+<details>
+  <summary>解决方法</summary>
+<hr />
+<p><strong>方法 1：手动下载本地数据集（推荐，稳定）</strong></p>
+<ol>
+<li>我帮你找好 <code>ChnSentiCorp</code> 数据集的 CSV 文件（包含“评论”和“标签”），我们直接用 <code>pandas</code> 读本地数据，不走 Hugging Face Hub。</li>
+<li>你把文件放到 <code>/workspace/data/</code> 下，脚本改成：</li>
+</ol>
+<pre><code class="language-python">from datasets import Dataset
+import pandas as pd
+
+df = pd.read_csv("data/chnsenticorp.csv")  # 假设有 text, label 两列
+dataset = Dataset.from_pandas(df)
+</code></pre>
+<p>这样完全不用联网。</p>
+<hr />
+<p><strong>方法 2：配置 Hugging Face 国内镜像</strong>（如果要继续用 Hub）</p>
+<pre><code class="language-bash">pip install huggingface_hub
+huggingface-cli login  # 如果你有 HF 账号，输入 token
+</code></pre>
+<p>然后在 Python 里加：</p>
+<pre><code class="language-python">from datasets import load_dataset
+dataset = load_dataset("shibing624/chnsenticorp")
+</code></pre>
+<p><code>shibing624/chnsenticorp</code> 是社区上传的版本，比官方的更容易下载。
+但前提是你的服务器能科学访问。</p>
+<hr />
+<p><strong>方法 3：换一个本地可用的中文情感数据集</strong>
+比如直接用几百条示例数据练手，先跑通流程，再换更大的数据。</p>
+<hr />
+<p>我走的是 <strong>方法 1（本地数据）</strong>，这样我们马上就能开始微调，不用折腾网络。</p>
+</details>
+<p>将以下数据写入<code>chnsenticorp.csv</code> 文件内容，然后把它保存到 <code>/workspace/data/chnsenticorp.csv</code> 就可以了。</p>
+<details>
+  <summary>示例内容</summary>
+<p>这里是示例内容，包含几条中文情感分类的样本，格式是 <code>text,label</code>，label 1 表示积极，0 表示消极：</p>
+<pre><code class="language-csv">text,label
+这个产品真的很好用,1
+质量太差了，非常失望,0
+服务态度非常好，值得推荐,1
+不喜欢这个商品，体验很差,0
+物美价廉，超出预期,1
+垃圾，完全没有用,0
+快递很快，包装也不错,1
+差评，根本不值这个价格,0
+用了几天才发现非常好用，满意,1
+颜色和图片一样，非常漂亮,1
+安装复杂，说明书不详细,0
+客服态度冷淡，不想买了,0
+性价比高，下次还会买,1
+东西坏了，退货麻烦,0
+物流慢得让人心焦,0
+体验很好，操作简单,1
+设计时尚，手感不错,1
+没有预期的好，失望,0
+包装破损，影响心情,0
+价格合理，划算,1
+产品材质很差，感觉便宜货,0
+客服耐心解答，解决了问题,1
+收到货后很满意，非常棒,1
+快递员态度差，影响心情,0
+质量非常好，超出预期,1
+产品有异味，不建议购买,0
+使用方便，效果明显,1
+退货过程繁琐，浪费时间,0
+非常喜欢，推荐购买,1
+功能齐全，操作流畅,1
+
+</code></pre>
+</details>
+<p>执行</p>
+<p>✅ 训练完成，模型已保存到 ./my-chinese-sentiment</p>
+<p>加载刚训练好的模型和分词器，给一句中文文本做情感预测：</p>
+<details>
+  <summary>代码示例</summary>
+<pre><code class="language-python">from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import torch
+import numpy as np
+
+# 1. 加载训练后保存的模型和分词器
+model_dir = "./my-chinese-sentiment"
+tokenizer = AutoTokenizer.from_pretrained(model_dir)
+model = AutoModelForSequenceClassification.from_pretrained(model_dir)
+
+# 2. 准备输入文本
+text = "这个产品真的很好用，我很喜欢！"
+
+# 3. 分词编码
+inputs = tokenizer(text, return_tensors="pt", truncation=True, padding="max_length", max_length=128)
+
+# 4. 模型推理
+model.eval()
+with torch.no_grad():
+    outputs = model(**inputs)
+    logits = outputs.logits
+
+# 5. 取概率最高的类别索引
+predicted_class_id = torch.argmax(logits, dim=1).item()
+
+# 6. 输出结果（0=消极，1=积极）
+labels_map = {0: "消极", 1: "积极"}
+print(f"文本：{text}")
+print(f"预测情感：{labels_map[predicted_class_id]}")
+</code></pre>
+<hr />
+<p>把这段代码保存成比如 <code>predict.py</code>，执行：</p>
+<pre><code class="language-bash">python predict.py
+</code></pre>
+<p>就能看到模型对示例文本的情感预测结果了。</p>
+<h2>(base) root@VM-14-154-ubuntu:/workspace# python predict.py
+文本：这个产品真的很好用，我很喜欢！
+预测情感：积极</h2>
+</details>
+<h3 id="微调方案"><a class="header" href="#微调方案">微调方案</a></h3>
+<details>
+  <summary>方案</summary>
+因为用的是 Hugging Face Transformers 训练的中文情感分类模型，想用类似 **LLaMA-Factory** 的带 Web UI 的工具来微调它，以下是可行方案和思路：
+<hr />
+<h2 id="1-llama-factory-ui-是专门针对-llama-系列大语言模型设计的"><a class="header" href="#1-llama-factory-ui-是专门针对-llama-系列大语言模型设计的">1. LLaMA-Factory UI 是专门针对 LLaMA 系列大语言模型设计的</a></h2>
+<ul>
+<li>它集成了训练、推理的 Web 界面</li>
+<li>支持 LoRA / QLoRA 微调等</li>
+<li>主要面向生成任务和大模型，不直接支持一般 Transformers 分类模型微调</li>
+</ul>
+<hr />
+<h2 id="2-你的模型基于-roberta微调--ui-方案"><a class="header" href="#2-你的模型基于-roberta微调--ui-方案">2. 你的模型（基于 RoBERTa）微调 + UI 方案</a></h2>
+<h3 id="方案-a用-gradio-或-streamlit-自己搭建简单的-web-ui"><a class="header" href="#方案-a用-gradio-或-streamlit-自己搭建简单的-web-ui">方案 A：用 Gradio 或 Streamlit 自己搭建简单的 Web UI</a></h3>
+<ul>
+<li><strong>Gradio</strong> 是很流行的 Python 库，可以用几行代码快速做一个网页界面，既能推理也能触发训练</li>
+<li>你可以把训练脚本改成函数，前端传入训练参数和数据，后台调用 Hugging Face Trainer 训练，推理部分用你已保存模型加载做预测</li>
+</ul>
+<p>示例：简易推理 + 训练按钮界面（可扩展）</p>
+<pre><code class="language-python">import gradio as gr
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trainer, TrainingArguments
+import torch
+import pandas as pd
+
+model_dir = "./my-chinese-sentiment"
+tokenizer = AutoTokenizer.from_pretrained(model_dir)
+model = AutoModelForSequenceClassification.from_pretrained(model_dir)
+
+def predict(text):
+    inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True, max_length=128)
+    outputs = model(**inputs)
+    probs = torch.softmax(outputs.logits, dim=-1)
+    label = torch.argmax(probs).item()
+    return "积极" if label == 1 else "消极"
+
+def train(data_csv):
+    # 这里简单示范：接收 CSV 文件路径，运行训练脚本或调用 Trainer
+    df = pd.read_csv(data_csv.name)
+    # 你可以写完整的训练流程，参考之前代码
+    return "训练已完成！"
+
+with gr.Blocks() as demo:
+    gr.Markdown("# 中文情感分类微调与预测")
+    text_input = gr.Textbox(label="输入文本预测情感")
+    pred_button = gr.Button("预测")
+    pred_output = gr.Label()
+    
+    pred_button.click(predict, inputs=text_input, outputs=pred_output)
+    
+    file_input = gr.File(label="上传训练数据 CSV")
+    train_button = gr.Button("开始训练")
+    train_output = gr.Textbox()
+    
+    train_button.click(train, inputs=file_input, outputs=train_output)
+
+demo.launch()
+</code></pre>
+<p>用 <code>python your_gradio_app.py</code> 启动后就有个简单 UI 可以试。</p>
+<hr />
+<h3 id="方案-b用已有的-hugging-face-spaces"><a class="header" href="#方案-b用已有的-hugging-face-spaces">方案 B：用已有的 Hugging Face Spaces</a></h3>
+<ul>
+<li>Hugging Face Spaces 支持 Gradio/Streamlit，可以快速部署在线 Web 应用</li>
+<li>但通常不支持在线训练，只适合推理</li>
+</ul>
+<hr />
+<h3 id="方案-c使用专业-mlops--automl-平台"><a class="header" href="#方案-c使用专业-mlops--automl-平台">方案 C：使用专业 MLOps / AutoML 平台</a></h3>
+<ul>
+<li>比如 Azure ML Studio、Weights &amp; Biases、SageMaker 等</li>
+<li>有完整界面管理训练、推理和监控，但配置和成本较高</li>
+</ul>
+<hr />
+<h2 id="3-总结"><a class="header" href="#3-总结">3. 总结</a></h2>
+<ul>
+<li><strong>LLaMA-Factory 的 Web UI</strong> 是专门给大语言模型用的，不能直接拿来训练 RoBERTa 分类模型</li>
+<li>可以用 <strong>Gradio</strong> 自己快速搭个界面，实现简单的训练和推理交互</li>
+<li>训练部分逻辑完全可复用已有的代码，UI 只负责文件上传和参数传递</li>
+</ul>
+<hr />
+</details>
+<h2 id="gradio-前端搭建"><a class="header" href="#gradio-前端搭建">gradio-前端搭建</a></h2>
+<p>我采用方案A，以下是一个基于 <strong>Gradio</strong> 的简单中文情感分类微调+推理 Web UI 示例。这个界面支持：</p>
+<ul>
+<li>输入文本做情感预测</li>
+<li>上传新的训练数据 CSV，点击按钮触发微调训练</li>
+</ul>
+<hr />
+<details>
+  <summary>示范</summary>
+<h3 id="完整示范代码apppy"><a class="header" href="#完整示范代码apppy">完整示范代码（<code>app.py</code>）</a></h3>
+<pre><code class="language-python">import gradio as gr
+import pandas as pd
+import torch
+import numpy as np
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trainer, TrainingArguments
+from datasets import Dataset
+import evaluate
+
+# 初始加载已有模型和分词器
+model_dir = "./my-chinese-sentiment"
+tokenizer = AutoTokenizer.from_pretrained(model_dir)
+model = AutoModelForSequenceClassification.from_pretrained(model_dir)
+
+# 评价指标
+accuracy = evaluate.load("accuracy")
+
+def compute_metrics(eval_pred):
+    logits, labels = eval_pred
+    predictions = np.argmax(logits, axis=-1)
+    return accuracy.compute(predictions=predictions, references=labels)
+
+# 预测函数
+def predict(text):
+    inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True, max_length=128)
+    model.eval()
+    with torch.no_grad():
+        outputs = model(**inputs)
+        probs = torch.softmax(outputs.logits, dim=-1)
+        label = torch.argmax(probs).item()
+    return "积极" if label == 1 else "消极"
+
+# 训练函数
+def train(file_obj):
+    try:
+        df = pd.read_csv(file_obj.name)
+        if "text" not in df.columns or "label" not in df.columns:
+            return "CSV必须包含'text'和'label'两列"
+        
+        dataset = Dataset.from_pandas(df)
+        split_ds = dataset.train_test_split(test_size=0.2, seed=42)
+        train_ds = split_ds["train"]
+        eval_ds = split_ds["test"]
+
+        def preprocess_fn(examples):
+            return tokenizer(examples["text"], truncation=True, padding="max_length", max_length=128)
+
+        train_ds = train_ds.map(preprocess_fn, batched=True)
+        eval_ds = eval_ds.map(preprocess_fn, batched=True)
+
+        training_args = TrainingArguments(
+            output_dir="./results",
+            save_strategy="epoch",
+            learning_rate=2e-5,
+            per_device_train_batch_size=16,
+            per_device_eval_batch_size=16,
+            num_train_epochs=2,
+            weight_decay=0.01,
+            logging_dir="./logs",
+            logging_steps=50,
+            push_to_hub=False,
+            load_best_model_at_end=False,
+            fp16=True
+        )
+
+        trainer = Trainer(
+            model=model,
+            args=training_args,
+            train_dataset=train_ds,
+            eval_dataset=eval_ds,
+            tokenizer=tokenizer,
+            compute_metrics=compute_metrics
+        )
+
+        trainer.train()
+
+        # 训练结束后保存模型，方便后续预测用最新模型
+        trainer.save_model(model_dir)
+        tokenizer.save_pretrained(model_dir)
+
+        return "✅ 训练完成，模型已更新"
+    except Exception as e:
+        return f"训练失败，错误：{e}"
+
+# Gradio UI 布局
+with gr.Blocks() as demo:
+    gr.Markdown("# 中文情感分类微调与预测")
+    
+    with gr.Tab("预测"):
+        text_input = gr.Textbox(label="输入文本")
+        pred_button = gr.Button("预测情感")
+        pred_output = gr.Label()
+        pred_button.click(predict, inputs=text_input, outputs=pred_output)
+    
+    with gr.Tab("微调训练"):
+        file_input = gr.File(label="上传训练数据 CSV（含 text, label 列）", file_types=[".csv"])
+        train_button = gr.Button("开始微调训练")
+        train_output = gr.Textbox()
+        train_button.click(train, inputs=file_input, outputs=train_output)
+
+demo.launch(server_name="0.0.0.0", server_port=7860)
+
+</code></pre>
+<hr />
+<h3 id="使用说明"><a class="header" href="#使用说明">使用说明</a></h3>
+<ol>
+<li><strong>准备好你之前训练好的模型</strong>，路径是 <code>./my-chinese-sentiment</code>。</li>
+<li>安装依赖：</li>
+</ol>
+<pre><code class="language-bash">pip install gradio transformers datasets evaluate torch pandas
+</code></pre>
+<ol start="3">
+<li>运行：</li>
+</ol>
+<pre><code class="language-bash">python app.py
+</code></pre>
+<ol start="4">
+<li>
+<p>浏览器打开自动弹出的链接或访问 <code>http://127.0.0.1:7860</code>，你就能看到界面。</p>
+</li>
+<li>
+<p><strong>预测页</strong>：输入中文文本点击“预测情感”。</p>
+</li>
+<li>
+<p><strong>微调训练页</strong>：上传包含 <code>text</code> 和 <code>label</code> 的 CSV 文件，点击“开始微调训练”，训练结束后模型会自动更新。</p>
+</li>
+</ol>
+<hr />
+<h3 id="注意"><a class="header" href="#注意">注意</a></h3>
+<ul>
+<li>训练会使用你的当前硬件（最好有 GPU）。</li>
+<li>训练时间视数据量和机器性能而定。</li>
+<li>训练过程的日志会输出到控制台。</li>
+<li>这个界面示例简单直观，你可以根据需求自行扩展。</li>
+</ul>
+<hr />
+<p>安装 sudo。
+确保服务器本身没有额外防火墙限制
+运行命令检查（Ubuntu 常见是 ufw）：</p>
+<hr />
+<h2 id="ubuntudebian-系统安装-ufw"><a class="header" href="#ubuntudebian-系统安装-ufw">Ubuntu/Debian 系统安装 ufw</a></h2>
+<pre><code class="language-bash">apt update
+apt install ufw
+</code></pre>
+<hr />
+<p>运行</p>
+<pre><code class="language-bash">ufw status
+</code></pre>
+<p>如果提示 <code>command not found</code>，<code>Status: inactive</code>说明系统没安装 <code>ufw</code>。</p>
+<ol>
+<li>用隧道工具（推荐）
+通过隧道工具暴露 Gradio 端口，实现本地浏览器访问。</li>
+</ol>
+<p>常用工具
+ngrok（需注册）</p>
+<p>cloudflared（Cloudflare 提供）</p>
+<p>frp（需要你自己的公网服务器做跳板）</p>
+<ol start="2">
+<li>ngrok 简单使用示范
+下载并安装 ngrok：</li>
+</ol>
+<hr />
+<h2 id="一准备工作"><a class="header" href="#一准备工作">一、准备工作</a></h2>
+<ol>
+<li>
+<p>注册 <a href="https://ngrok.com/">ngrok 官网</a> 并登录，进入 Dashboard 获取你的 <strong>Authtoken</strong>。</p>
+</li>
+<li>
+<p>云IDE 里下载并解压 ngrok：</p>
+</li>
+</ol>
+<pre><code class="language-bash">wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+unzip ngrok-stable-linux-amd64.zip
+chmod +x ngrok
+./ngrok version
+</code></pre>
+<hr />
+<h2 id="正确下载最新-ngrok-版本的方法"><a class="header" href="#正确下载最新-ngrok-版本的方法">正确下载最新 ngrok 版本的方法</a></h2>
+<p>ngrok 最新版本是 3.x，官方最新 Linux 64位下载地址：</p>
+<pre><code class="language-bash">wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz -O ngrok.tgz
+tar -xzf ngrok.tgz
+chmod +x ngrok
+./ngrok version
+</code></pre>
+<hr />
+<p>执行完后，认证 token ：</p>
+<pre><code class="language-bash">./ngrok authtoken &lt;你的token&gt;
+</code></pre>
+<h2 id="公网访问与隧道工具-ngrok"><a class="header" href="#公网访问与隧道工具-ngrok">公网访问与隧道工具-ngrok</a></h2>
+<hr />
+<h3 id="执行"><a class="header" href="#执行">执行</a></h3>
+<ol>
+<li>先运行你的 Gradio 服务：</li>
+</ol>
+<pre><code class="language-bash">python app.py
+</code></pre>
+<p>确认它在运行，并且输出类似：</p>
+<pre><code>Running on local URL:  http://0.0.0.0:7860
+</code></pre>
+<ol start="2">
+<li>在另一个终端窗口，启动 ngrok 隧道：</li>
+</ol>
+<pre><code class="language-bash">./ngrok http 7860
+</code></pre>
+<ol start="3">
+<li>复制 ngrok 显示的公网地址，用浏览器访问，就能看到你的 Gradio 页面。</li>
+</ol>
+<p>---。</p>
+<h2 id="总结与扩展"><a class="header" href="#总结与扩展">总结与扩展</a></h2>
+<ul>
+<li>本文演示了中文情感分类模型的完整微调与部署流程</li>
+<li>介绍了如何解决云服务器端口访问限制问题</li>
+<li>后续可尝试 Docker 容器化部署、搭建更复杂的在线服务接口</li>
+<li>ngrok 免费账号的公网地址是临时随机的，重启后会变化。</li>
+<li>建议只用于调试、临时访问。</li>
+</ul>
+<hr />
+<h2 id="项目文件结构"><a class="header" href="#项目文件结构">项目文件结构</a></h2>
+<pre><code>/workspace/
+├── data/
+│   └── chnsenticorp.csv       # 中文情感分类数据CSV
+├── my-chinese-sentiment/      # 训练后模型文件夹
+│   ├── config.json
+│   ├── pytorch_model.bin
+│   ├── tokenizer.json
+│   └── ...
+├── app.py                     # Gradio 启动脚本
+├── finetune_sentiment.py      # 微调训练脚本
+├── ngrok                      # ngrok 可执行文件
+├── ngrok.tgz                  # ngrok 压缩包
+└── start_gradio_with_ngrok.py # （可选）自动启动Gradio和ngrok脚本
+</code></pre>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../TX/intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../TX/ubuntu.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../TX/intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../TX/ubuntu.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/extra.js"></script>
+        <script src="../theme/pagetoc.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

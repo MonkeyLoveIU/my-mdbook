@@ -1,0 +1,222 @@
+/* === 全局字体样式优化 === */
+
+/* === 黑暗背景 === */
+html {
+  background-color: #3f3f66;
+}
+
+/* === 标题样式 === */
+h1, h2, h3, h4 {
+  color: #f0f0f0;
+  border-bottom: 1px solid #444;
+  padding-bottom: 4px;
+}
+
+/* 如果你特别喜欢绿色 h1，可改这一句： */
+/* h1 { color: rgb(136, 199, 103); } */
+
+/* === 链接样式 === */
+a {
+  color: #80d0ff;
+}
+a:hover {
+  color: #ffcc70;
+}
+
+/* === 行内代码样式 === */
+code {
+  background-color: #333;
+  color: #fffa;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Fira Code', monospace;
+}
+
+/* === 多行代码块美化 === */
+pre code {
+  background-color: #2a2a3d;
+  color: #e8e8e8;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  display: block;
+  overflow-x: auto;
+  font-family: 'Fira Code', monospace;
+}
+
+/* === 表格样式 === */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 1em;
+}
+table th, table td {
+  border: 1px solid #555;
+  padding: 8px;
+  text-align: left;
+}
+
+/* === 阅读进度条 === */
+#reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  z-index: 9999;
+  width: 0%;
+  transition: width 0.1s ease-out;
+}
+/* === 正文段落居中排版 === */
+section.chapter p {
+  text-align: center;
+}
+
+/* 固定左侧导航栏，并设置宽度 */
+nav.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 280px;  /* ✅ 左侧导航栏宽度 */
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+/* 控制正文宽度 + 居中 + 避开导航栏 + 避开右侧目录 */
+section.chapter {
+  max-width: 980px !important;
+  margin-left: 3000px;  /* ✅ 左边留出导航栏宽度+间距 */
+  margin-right: 260px; /* ✅ 右边留出目录宽度+间距 */
+  padding: 2rem;
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+/* 右侧目录容器 */
+.sidetoc {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.pagetoc {
+  position: fixed;
+  top: var(--menu-bar-height, 0);
+  right: 20px;  /* ✅ 距离右边 20px */
+  width: 220px; /* ✅ 目录宽度 */
+  height: calc(100vh - var(--menu-bar-height, 0) - 2rem);
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+/* 目录样式 */
+.pagetoc a {
+  border-left: 1px solid var(--sidebar-bg, #333);
+  color: var(--fg, #e0e0e0) !important;
+  display: block;
+  padding: 5px 10px;
+  text-align: left;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.pagetoc a:hover,
+.pagetoc a.active {
+  background: var(--sidebar-bg, #333);
+  color: var(--sidebar-fg, #fff) !important;
+}
+
+/* 不要再让 body 设置宽度和居中 */
+body {
+  font-family: "Segoe UI", "Noto Serif SC", serif;
+  color: #e0e0e0;
+  line-height: 1.8;
+  font-size: 17px;
+  background-color: #1e1e2f;
+}
+
+
+
+
+/* === 可折叠提示框样式 === */
+details.note {
+  background-color: #e0f7fa;
+  border-left: 5px solid #00bcd4;
+  border-radius: 6px;
+  margin: 1.5em 0;
+  padding: 1em 1em 0.5em;
+  color: #004d40;
+  font-size: 16px;
+}
+
+details.note summary {
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  color: #006064;
+}
+
+/* === 折叠框内代码块样式增强（配合已有样式可省略） */
+details.note pre code {
+  background-color: #e0f2f1;
+  color: #004d40;
+  border: 1px solid #80cbc4;
+  border-radius: 6px;
+  padding: 10px;
+  display: block;
+  overflow-x: auto;
+  margin-top: 0.5em;
+  font-family: 'Fira Code', monospace;
+}
+
+
+/* 添加进入动画的基本样式 */
+details.note[open] {
+  animation: fadeInSlide 0.3s ease-in-out;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-5px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 鼠标移到 summary 上有 hover 效果 */
+details.note summary:hover {
+  color: #00acc1;
+  transition: color 0.2s ease;
+}
+
+
+
+
+/* === 夜间模式专用霓虹呼吸分隔线 === */
+.theme-separator-dark {
+  border: none;
+  height: 4px;
+  margin: 3rem 0;
+  background: linear-gradient(90deg, #00f0ff, #a200ff, #00f0ff);
+  border-radius: 3px;
+  box-shadow:
+    0 0 8px #00f0ff,
+    0 0 16px #a200ff,
+    0 0 24px rgba(0, 240, 255, 0.6);
+  animation: glow-pulse 2s infinite ease-in-out;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1.2);
+  }
+  50% {
+    opacity: 0.6;
+    filter: brightness(1.6);
+  }
+}
