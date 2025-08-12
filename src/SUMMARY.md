@@ -67,9 +67,9 @@
 
 - [数学分析习题集](./Demidovich/Mathematical_Analysis/intro.md)
   - [第一章 | 分析引论](./Demidovich/Mathematical_Analysis/Chapter-one/intro.md)
-    - [第一节](./Demidovich/Mathematical_Analysis/Chapter-one/Section_1-1.md)
-
-
+    - [第一节 | 实数 - 数学归纳法及分割定义](./Demidovich/Mathematical_Analysis/Chapter-one/Section_1-1.md)
+    - [第一节 | 实数 - 数学归纳法背后逻辑](./Demidovich/Mathematical_Analysis/Chapter-one/Section_1-2.md)
+    - [第一节 | 实数 - ](./Demidovich/Mathematical_Analysis/Chapter-one/Section_1-3.md)
 
 # 专业课程篇
 
