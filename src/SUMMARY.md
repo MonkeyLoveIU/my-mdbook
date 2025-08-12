@@ -70,7 +70,10 @@
     - [第一节 | 实数 - 数学归纳法及分割定义](./Demidovich/Mathematical_Analysis/Chapter-one/Section_1-1.md)
     - [第一节 | 实数 - 数学归纳法背后逻辑](./Demidovich/Mathematical_Analysis/Chapter-one/Section_1-2.md)
     - [第一节 | 实数 - 绝对误差和相对误差](./Demidovich/Mathematical_Analysis/Chapter-one/Section_1-3.md)
-
+    - [第一节 | 实数 - 绝对值与确界](./Demidovich/Mathematical_Analysis/Chapter-one/Section_1-4.md)
+    - [第一节 | 实数 - 数学归纳法例题1](./Demidovich/Mathematical_Analysis/Chapter-one/Section_1-5.md)
+    - [第一节 | 实数 - 数学归纳法-牛顿二项式公式](./Demidovich/Mathematical_Analysis/Chapter-one/Section_1-6.md)
+    
 # 专业课程篇
 
 - [数学分析 | Mathematical Analysis](.Mathematical_Analysis/intro.md)
