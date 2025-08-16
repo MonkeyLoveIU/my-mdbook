@@ -142,6 +142,9 @@
 - [计算机科学简入门指南 | Computer Science Guide](learning/cs-guide.md)
 
 - [心理学 | Psychology](./Psychology/intro.md)
+  - [自我实现与马斯洛需求层次](./Psychology/one.md)
+  - [确认偏差——我们都在“选择性看世界](./Psychology/two.md)
+
 
 - [文学 | Literature](./Literature/intro.md)
 
