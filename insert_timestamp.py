@@ -2,23 +2,36 @@ import os
 import subprocess
 import re
 import argparse
+from datetime import datetime
 
 EXCLUDE_FILES = ['SUMMARY.md', 'README.md']
 TIME_MARKER = '<!-- timestamp inserted -->'
+TIME_FORMAT = "%Y-%m-%d %H:%M:%S"  # 统一时间显示格式
+
+def format_git_time(git_time):
+    """格式化 Git ISO 时间为自定义格式"""
+    dt = datetime.fromisoformat(git_time)
+    return dt.strftime(TIME_FORMAT)
 
 def get_git_times(filepath):
     """通过 git log 获取文件的创建时间和最后修改时间"""
-    # 第一次提交时间（创建时间）
-    create_time = subprocess.check_output(
-        ["git", "log", "--diff-filter=A", "--format=%aI", "--", filepath],
-        text=True
-    ).strip().split("\n")[-1]
+    try:
+        create_time = subprocess.check_output(
+            ["git", "log", "--diff-filter=A", "--format=%aI", "--", filepath],
+            text=True
+        ).strip().split("\n")[-1]
+        create_time = format_git_time(create_time)
+    except subprocess.CalledProcessError:
+        create_time = "未知"
 
-    # 最后一次提交时间（修改时间）
-    modify_time = subprocess.check_output(
-        ["git", "log", "-1", "--format=%aI", "--", filepath],
-        text=True
-    ).strip()
+    try:
+        modify_time = subprocess.check_output(
+            ["git", "log", "-1", "--format=%aI", "--", filepath],
+            text=True
+        ).strip()
+        modify_time = format_git_time(modify_time)
+    except subprocess.CalledProcessError:
+        modify_time = "未知"
 
     return create_time, modify_time
 
