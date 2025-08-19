@@ -31,4 +31,3 @@ additional-js = [
     "theme/extra.js",
     "theme/pagetoc.js"
 ]
-

@@ -21,17 +21,39 @@
 # 回忆录 | Memoir
 
 - [小学篇 | The Primary School Years](./Memoir/The-Primary-School-Years/intro.md)
+  - [人物篇 | People & Characters](./Memoir/The-Primary-School-Years/Character.md)
+    - [于冉](./Memoir/The-Primary-School-Years/people/one.md)
+
+  - [叙事篇 | Tales & Memories](./Memoir/The-Primary-School-Years/Memories.md)
 
 - [初中篇 | The Middle School Years](./Memoir/The-Middle-School-Years/intro.md)
 
+  - [人物篇 | People & Characters](./Memoir/The-Middle-School-Years/Character.md)
+
+
+  - [叙事篇 | Tales & Memories](./Memoir/The-Middle-School-Years/Memories.md)
+
 - [高中篇 | The High School Years](./Memoir/The-High-School-Years/intro.md)
+  - [人物篇 | People & Characters](./Memoir/The-High-School-Years/Character.md)
+
+
+  - [叙事篇 | Tales & Memories](./Memoir/The-High-School-Years/Memories.md)
 
 - [大学篇 | The University Years](./Memoir/The-University-Years/intro.md)
-  - [one | ](./Memoir/The-University-Years/one.md)
-  - [two | ](./Memoir/The-University-Years/two.md)
+
+  - [人物篇 | People & Characters](./Memoir/The-University-Years/Character.md)
+
+
+  - [叙事篇 | Tales & Memories](./Memoir/The-University-Years/Memories.md)
+    - [开学日 | ](./Memoir/The-University-Years/one.md)
+    - [军训服及班会 | ](./Memoir/The-University-Years/two.md)
 
 
 - [家庭篇 | Family and Home](./Memoir/Family-and-Home/intro.md)
+  - [人物篇 | People & Characters](./Memoir/Family-and-Home/Character.md)
+
+
+  - [叙事篇 | Tales & Memories](./Memoir/Family-and-Home/Memories.md)
 
 
 
@@ -58,7 +80,8 @@
   - [朝花夕拾](./life/two.md)
 
 
-- [小说 | Novels](./life/novels.md)
+- [随笔 |Casual Notes](./Casual/intro.md)
+  - [黑月之潮（下）| 迎着阳光盛大逃亡 | Escape in the Sun](./Casual/one.md)
 
 ---
 
