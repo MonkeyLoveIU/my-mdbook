@@ -35,6 +35,16 @@
 
 - [高中篇 | The High School Years](./Memoir/The-High-School-Years/intro.md)
   - [人物篇 | People & Characters](./Memoir/The-High-School-Years/Character.md)
+    - [慧慧](./Memoir/The-High-School-Years/people/one.md)
+    - [同桌](./Memoir/The-High-School-Years/people/two.md)
+
+    - [超](./Memoir/The-High-School-Years/people/three.md)
+    - [王嘉琪](./Memoir/The-High-School-Years/people/four.md)
+    - [牛育冉](./Memoir/The-High-School-Years/people/five.md)
+    - [贾雪](./Memoir/The-High-School-Years/people/six.md)
+    - [贾雪她对象](./Memoir/The-High-School-Years/people/seven.md)
+
+
 
 
   - [叙事篇 | Tales & Memories](./Memoir/The-High-School-Years/Memories.md)
