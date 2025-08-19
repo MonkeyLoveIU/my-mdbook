@@ -1,16 +1,16 @@
 name: Deploy mdBook site to Pages
 
-on: 
-  push: 
-    branches: ["main"]   # 监听 main 分支
+on:
+  push:
+    branches: ["main"]
     paths:
-      - "**.md"          # 只有 Markdown 文件变动时才触发
+      - "**.md"
       - "insert_timestamp.py"
       - "src/**"
   workflow_dispatch:
 
 permissions:
-  contents: write   # ⚠️ 必须是 write 才能 commit & push
+  contents: write
   pages: write
   id-token: write
 
@@ -19,23 +19,33 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # 必须完整历史，才能获取 git log 时间
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      - name: Insert timestamps into markdown files
+      - name: Insert timestamps
         run: python insert_timestamp.py
 
-      - name: Commit updated timestamps
+      - name: Check for Markdown changes
+        id: check_changes
+        run: |
+          # 检查是否有 .md 文件变动
+          if git diff --name-only HEAD~1 HEAD | grep '\.md$'; then
+            echo "md_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "md_changed=false" >> $GITHUB_OUTPUT
+
+      - name: Commit timestamp changes
+        if: ${{ steps.check_changes.outputs.md_changed == 'true' }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -44,6 +54,7 @@ jobs:
           git push
 
       - name: Install Rust and mdBook
+        if: ${{ steps.check_changes.outputs.md_changed == 'true' }}
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           source "$HOME/.cargo/env"
@@ -52,24 +63,21 @@ jobs:
           cargo install mdbook-katex
 
       - name: Setup Pages
+        if: ${{ steps.check_changes.outputs.md_changed == 'true' }}
         id: pages
         uses: actions/configure-pages@v5
 
-      - name: Build with mdBook
+      - name: Build mdBook
+        if: ${{ steps.check_changes.outputs.md_changed == 'true' }}
         run: mdbook build
 
       - name: Upload artifact
+        if: ${{ steps.check_changes.outputs.md_changed == 'true' }}
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./book
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
       - name: Deploy to GitHub Pages
+        if: ${{ steps.check_changes.outputs.md_changed == 'true' }}
         id: deployment
         uses: actions/deploy-pages@v4

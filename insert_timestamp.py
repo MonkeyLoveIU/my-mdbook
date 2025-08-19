@@ -1,73 +1,72 @@
+#!/usr/bin/env python3
 import os
-import subprocess
 import re
-import argparse
+import subprocess
+from datetime import datetime
 
 EXCLUDE_FILES = ['SUMMARY.md', 'README.md']
-TIME_MARKER = '<!-- timestamp inserted -->'
 
 def get_git_times(filepath):
-    """通过 git log 获取文件的创建时间和最后修改时间"""
-    # 第一次提交时间（创建时间）
-    create_time = subprocess.check_output(
-        ["git", "log", "--diff-filter=A", "--format=%aI", "--", filepath],
-        text=True
-    ).strip().split("\n")[-1]
+    """获取 Git 文件的创建时间和最后修改时间"""
+    try:
+        create_time = subprocess.check_output(
+            ["git", "log", "--diff-filter=A", "--format=%aI", "--", filepath],
+            text=True
+        ).strip().split("\n")[-1]
+    except subprocess.CalledProcessError:
+        create_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    # 最后一次提交时间（修改时间）
-    modify_time = subprocess.check_output(
-        ["git", "log", "-1", "--format=%aI", "--", filepath],
-        text=True
-    ).strip()
+    try:
+        modify_time = subprocess.check_output(
+            ["git", "log", "-1", "--format=%aI", "--", filepath],
+            text=True
+        ).strip()
+    except subprocess.CalledProcessError:
+        modify_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    return create_time, modify_time
+    # 转换为友好格式：YYYY-MM-DD HH:MM:SS
+    def pretty(time_str):
+        try:
+            dt = datetime.fromisoformat(time_str.replace("Z", "+00:00"))
+            return dt.strftime("%Y-%m-%d %H:%M:%S")
+        except ValueError:
+            return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-def make_time_block(create_time, modify_time):
-    return f"""{TIME_MARKER}
-> 📄 创建时间：{create_time}  
-> 🛠️ 修改时间：{modify_time}
+    return pretty(create_time), pretty(modify_time)
 
-"""
-
-def insert_or_update_time(filepath, force=False):
+def insert_or_update_file(filepath, force=False):
     with open(filepath, "r", encoding="utf-8") as f:
         content = f.read()
 
+    created_pattern = re.compile(r"^📄 创建时间：(.+)$", re.MULTILINE)
+    modified_pattern = re.compile(r"^🛠️ 修改时间：(.+)$", re.MULTILINE)
+
     create_time, modify_time = get_git_times(filepath)
 
-    if TIME_MARKER in content:
-        if force:
-            # 强制刷新（创建+修改）
-            new_block = make_time_block(create_time, modify_time)
-            new_content = re.sub(
-                rf"{TIME_MARKER}[\s\S]*?\n\n",
-                new_block,
-                content,
-                count=1
-            )
-        else:
-            # 只更新修改时间
-            new_content = re.sub(
-                r"(> 🛠️ 修改时间：)(.*)",
-                f"\\1{modify_time}",
-                content
-            )
+    created_match = created_pattern.search(content)
+    modified_match = modified_pattern.search(content)
+
+    if not created_match or force:
+        created_line = f"📄 创建时间：{create_time}"
     else:
-        # 没有时间戳 → 插入新 block
-        new_content = make_time_block(create_time, modify_time) + content
+        created_line = created_match.group(0)
+
+    modified_line = f"🛠️ 修改时间：{modify_time}"
+
+    if created_match and modified_match:
+        content = created_pattern.sub(created_line, content, 1)
+        content = modified_pattern.sub(modified_line, content, 1)
+    else:
+        content = created_line + "\n" + modified_line + "\n\n" + content
 
     with open(filepath, "w", encoding="utf-8") as f:
-        f.write(new_content)
+        f.write(content)
 
-def run(force=False):
-    for root, dirs, files in os.walk("."):
+def process_directory(root_dir="."):
+    for root, _, files in os.walk(root_dir):
         for file in files:
             if file.endswith(".md") and file not in EXCLUDE_FILES:
-                insert_or_update_time(os.path.join(root, file), force=force)
+                insert_or_update_file(os.path.join(root, file))
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="在 Markdown 文件开头插入/更新 Git 提交时间戳")
-    parser.add_argument("--force", action="store_true", help="强制刷新创建时间和修改时间")
-    args = parser.parse_args()
-
-    run(force=args.force)
+    process_directory()
