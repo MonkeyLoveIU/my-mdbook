@@ -1,16 +1,16 @@
-name: Deploy mdBook site to GitHub Pages
+name: Deploy mdBook site to Pages
 
-on:
-  push:
-    branches: ["main"]
+on: 
+  push: 
+    branches: ["main"]   # 监听 main 分支
     paths:
-      - "**.md"
+      - "**.md"          # 只有 Markdown 文件变动时才触发
       - "insert_timestamp.py"
       - "src/**"
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: write   # ⚠️ 必须是 write 才能 commit & push
   pages: write
   id-token: write
 
@@ -19,29 +19,29 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0   # 必须完整历史，才能获取 git log 时间
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      - name: Insert timestamps
+      - name: Insert timestamps into markdown files
         run: python insert_timestamp.py
 
-      - name: Commit timestamp changes
+      - name: Commit updated timestamps
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git diff --cached --quiet || git commit -m "chore: update timestamps [skip ci]"
-          git push || true
+          git push
 
       - name: Install Rust and mdBook
         run: |
@@ -51,16 +51,25 @@ jobs:
           cargo install mdbook
           cargo install mdbook-katex
 
-      - name: Build mdBook
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with mdBook
         run: mdbook build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v6
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./book
-          # 分支可改为 gh-pages，GitHub Pages 默认指向这个分支
-          publish_branch: gh-pages
-          user_name: github-actions[bot]
-          user_email: github-actions[bot]@users.noreply.github.com
-          keep_files: true
+          path: ./book
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
