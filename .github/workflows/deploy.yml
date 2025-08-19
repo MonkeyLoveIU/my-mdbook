@@ -43,6 +43,8 @@ jobs:
             echo "md_changed=true" >> $GITHUB_OUTPUT
           else
             echo "md_changed=false" >> $GITHUB_OUTPUT
+          fi  
+        
 
       - name: Commit timestamp changes
         if: ${{ steps.check_changes.outputs.md_changed == 'true' }}
