@@ -1,4 +1,4 @@
-name: Deploy mdBook site to Pages
+name: Deploy mdBook site to GitHub Pages
 
 on:
   push:
@@ -35,28 +35,15 @@ jobs:
       - name: Insert timestamps
         run: python insert_timestamp.py
 
-      - name: Check for Markdown changes
-        id: check_changes
-        run: |
-          # 检查是否有 .md 文件变动
-          if git diff --name-only HEAD~1 HEAD | grep '\.md$'; then
-            echo "md_changed=true" >> $GITHUB_OUTPUT
-          else
-            echo "md_changed=false" >> $GITHUB_OUTPUT
-          fi  
-        
-
       - name: Commit timestamp changes
-        if: ${{ steps.check_changes.outputs.md_changed == 'true' }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git diff --cached --quiet || git commit -m "chore: update timestamps [skip ci]"
-          git push
+          git push || true
 
       - name: Install Rust and mdBook
-        if: ${{ steps.check_changes.outputs.md_changed == 'true' }}
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           source "$HOME/.cargo/env"
@@ -64,22 +51,16 @@ jobs:
           cargo install mdbook
           cargo install mdbook-katex
 
-      - name: Setup Pages
-        if: ${{ steps.check_changes.outputs.md_changed == 'true' }}
-        id: pages
-        uses: actions/configure-pages@v5
-
       - name: Build mdBook
-        if: ${{ steps.check_changes.outputs.md_changed == 'true' }}
         run: mdbook build
 
-      - name: Upload artifact
-        if: ${{ steps.check_changes.outputs.md_changed == 'true' }}
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./book
-
       - name: Deploy to GitHub Pages
-        if: ${{ steps.check_changes.outputs.md_changed == 'true' }}
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book
+          # 分支可改为 gh-pages，GitHub Pages 默认指向这个分支
+          publish_branch: gh-pages
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
+          keep_files: true
