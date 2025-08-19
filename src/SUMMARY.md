@@ -55,6 +55,7 @@
 
 - [胡言乱语 | Insanes](./life/insanes.md)
   - [青春么](./life/one.md)
+  - [朝花夕拾](./life/two.md)
 
 
 - [小说 | Novels](./life/novels.md)
@@ -183,6 +184,7 @@
   - [温暖的味道](./TV_Show/TV-Show/The-Smell-of-Warmth.md)
 
 - [电影 | Movie](./TV_Show/Movie/intro.md)
+  - [双狼](./TV_Show/Movie/one.md)
 
 
 - [综艺 | Variety Show](./TV_Show/Variety-Show/intro.md)

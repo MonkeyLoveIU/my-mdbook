@@ -12,6 +12,26 @@ default-theme = "navy"  # 启用深色主题，默认是 light
 
 [preprocessor.pagetoc]
 
+
+
+
+
+
+
 [output.html]
-additional-css = ["theme/custom.css", "theme/pagetoc.css"]
-additional-js  = ["theme/extra.js", "theme/pagetoc.js"]
+
+# 合并后的 CSS 文件
+additional-css = [
+    "theme/custom.css",
+    "theme/pagetoc.css",
+    "src/assets/js/APlayer.min.css"
+]
+
+# 合并后的 JS 文件
+additional-js = [
+    "theme/extra.js",
+    "theme/pagetoc.js",
+    "src/assets/js/APlayer.min.js",
+    "src/assets/js/Meting.min.js"
+]
+
