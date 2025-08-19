@@ -17,21 +17,18 @@ default-theme = "navy"  # 启用深色主题，默认是 light
 
 
 
-
 [output.html]
+theme = "theme"
 
 # 合并后的 CSS 文件
 additional-css = [
     "theme/custom.css",
-    "theme/pagetoc.css",
-    "src/assets/js/APlayer.min.css"
+    "theme/pagetoc.css"
 ]
 
 # 合并后的 JS 文件
 additional-js = [
     "theme/extra.js",
-    "theme/pagetoc.js",
-    "src/assets/js/APlayer.min.js",
-    "src/assets/js/Meting.min.js"
+    "theme/pagetoc.js"
 ]
 
