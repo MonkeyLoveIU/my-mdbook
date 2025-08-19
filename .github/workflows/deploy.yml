@@ -1,63 +1,75 @@
 name: Deploy mdBook site to Pages
 
 on: 
-  # Runs on pushes targeting the default branch
   push: 
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches: ["main"]   # 监听 main 分支
+    paths:
+      - "**.md"          # 只有 Markdown 文件变动时才触发
+      - "insert_timestamp.py"
+      - "src/**"
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write   # ⚠️ 必须是 write 才能 commit & push
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Install Rust and mdBook
-        run: |
-          curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf -y | sh
-          source "$HOME/.cargo/env"
-          rustup update
-          cargo install mdbook
-          cargo install mdbook-katex
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 必须完整历史，才能获取 git log 时间
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-  
+
       - name: Insert timestamps into markdown files
-        run: python insert_timestamp.py 
+        run: python insert_timestamp.py
+
+      - name: Commit updated timestamps
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff --cached --quiet || git commit -m "chore: update timestamps [skip ci]"
+          git push
+
+      - name: Install Rust and mdBook
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          source "$HOME/.cargo/env"
+          rustup update
+          cargo install mdbook
+          cargo install mdbook-katex
 
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+
       - name: Build with mdBook
         run: mdbook build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./book
 
-  # Deployment job
-  deploy: 
-    environment: 
-      name: github-pages 
-      url: ${{ steps.deployment.outputs.page_url }} 
-    runs-on: ubuntu-latest 
-    needs: build 
-    steps: 
-      - name: Deploy to GitHub Pages 
-        id: deployment 
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
