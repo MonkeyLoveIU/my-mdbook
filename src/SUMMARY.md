@@ -4,16 +4,13 @@
 # 简介 | Intro | プロフ | préface
 
 - [简介](intro.md)
-- [第一章](chapter_1.md)
-
-
-
 
 # 博客阅读指南 | Blog Reading Guide
 
 - [博客阅读指南](blog-reading.md)
 - [梦想清单 | Dream List](dream-list.md)
 - [人生规划 | Life Planning](planning.md)
+- [习惯追踪 | Habit Tracker](Habit.md)
 - [年度计划 | Year Plan](year-plan.md)
 
 
