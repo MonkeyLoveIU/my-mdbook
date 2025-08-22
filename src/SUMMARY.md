@@ -8,10 +8,12 @@
 # 博客阅读指南 | Blog Reading Guide
 
 - [博客阅读指南](blog-reading.md)
+
+# 个人规划 | Personal Planning
 - [梦想清单 | Dream List](dream-list.md)
-- [人生规划 | Life Planning](planning.md)
-- [习惯追踪 | Habit Tracker](Habit.md)
-- [年度计划 | Year Plan](year-plan.md)
+
+  - [打造电竞房 | Build Gaming Room](gaming.md)
+  - [习惯追踪 | Habit Tracker](Habit.md)
 
 
 
@@ -214,7 +216,9 @@
   - [温暖的味道](./TV_Show/TV-Show/The-Smell-of-Warmth.md)
 
 - [电影 | Movie](./TV_Show/Movie/intro.md)
-  - [双狼](./TV_Show/Movie/one.md)
+  - [双狼 | 美剧](./TV_Show/Movie/one.md)
+  - [ 信徒 | 韩剧](./TV_Show/Movie/two.md)
+
 
 
 - [综艺 | Variety Show](./TV_Show/Variety-Show/intro.md)
