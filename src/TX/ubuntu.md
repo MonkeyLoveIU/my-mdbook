@@ -1,3 +1,7 @@
+<!-- timestamp inserted -->
+> 📄 创建时间：2025-08-09 02:42:57  
+> 🛠️ 修改时间：2025-08-09 02:42:57
+
 `apt install neofetch` 是一条在 **Debian / Ubuntu / 及其衍生发行版** 的 Linux 系统中用来**安装软件**的命令。
 
 拆开解释：
