@@ -28,6 +28,12 @@
 - [初中篇 | The Middle School Years](./Memoir/The-Middle-School-Years/intro.md)
 
   - [人物篇 | People & Characters](./Memoir/The-Middle-School-Years/Character.md)
+    - [静姐](./Memoir/The-Middle-School-Years/people/one.md)
+    - [四大天王](./Memoir/The-Middle-School-Years/people/two.md)
+    - [四大天王之时彭超](./Memoir/The-Middle-School-Years/people/two-1.md)
+    - [四大天王之时坷](./Memoir/The-Middle-School-Years/people/two-2.md)
+    - [四大天王之蔡春旺](./Memoir/The-Middle-School-Years/people/two-3.md)
+    - [刘俊](./Memoir/The-Middle-School-Years/people/three.md)
 
 
   - [叙事篇 | Tales & Memories](./Memoir/The-Middle-School-Years/Memories.md)
@@ -37,7 +43,7 @@
     - [慧慧](./Memoir/The-High-School-Years/people/one.md)
     - [同桌](./Memoir/The-High-School-Years/people/two.md)
 
-    - [超](./Memoir/The-High-School-Years/people/three.md)
+    - [董世超](./Memoir/The-High-School-Years/people/three.md)
     - [王嘉琪](./Memoir/The-High-School-Years/people/four.md)
     - [牛育冉](./Memoir/The-High-School-Years/people/five.md)
     - [贾雪](./Memoir/The-High-School-Years/people/six.md)
@@ -65,6 +71,31 @@
   - [叙事篇 | Tales & Memories](./Memoir/Family-and-Home/Memories.md)
 
 
+- [嫡系篇 | ](./Memoir/my-students/intro.md)
+
+  - [吴铭格](./Memoir/my-students/one.md)
+  - [周品言](./Memoir/my-students/1.md)
+  - [边佳耀](./Memoir/my-students/two.md)
+  - [吴梦浩](./Memoir/my-students/three.md)
+  - [许润龙](./Memoir/my-students/four.md)
+  - [陈奕博](./Memoir/my-students/five.md)
+  - [李留德](./Memoir/my-students/six.md)
+  - [李欣颖](./Memoir/my-students/seven.md)
+  - [代梓涵](./Memoir/my-students/eight.md)
+  - [王梓萌](./Memoir/my-students/nine.md)
+  - [刘梦圆](./Memoir/my-students/ten.md)
+  - [李若楠](./Memoir/my-students/11.md)
+  - [孙梦迪](./Memoir/my-students/12.md)
+
+
+  <!-- - [潘鑫鑫] -->
+
+  
+
+- [搭档篇 ](./Memoir/partner/intro.md)
+  - [李戊梅](./Memoir/partner/one.md)
+  <!-- - [] -->
+
 
 ---
 
@@ -72,6 +103,7 @@
 # 日记 | Diary
 
 - [一](./Diary/one.md)
+- [二](./Diary/two.md)
 
 
 
@@ -79,6 +111,7 @@
 
 # 生活碎笔 | Life Traveling
 
+- [美食 | ](./food/intro.md)
 
 
 - [个人感触 | Feelings](./life/feelings.md)
