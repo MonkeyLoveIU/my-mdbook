@@ -104,6 +104,7 @@
 
 - [一](./Diary/one.md)
 - [二](./Diary/two.md)
+- [少林寺](./Diary/three.md)
 
 
 

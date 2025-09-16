@@ -1,16 +1,16 @@
 name: Deploy mdBook site to Pages
 
-on: 
-  push: 
-    branches: ["main"]   # 监听 main 分支
+on:
+  push:
+    branches: ["main"]
     paths:
-      - "**.md"          # 只有 Markdown 文件变动时才触发
+      - "**.md"
       - "insert_timestamp.py"
       - "src/**"
   workflow_dispatch:
 
 permissions:
-  contents: write   # ⚠️ 必须是 write 才能 commit & push
+  contents: write
   pages: write
   id-token: write
 
@@ -20,13 +20,15 @@ concurrency:
 
 jobs:
   build:
+    if: "!contains(github.event.head_commit.message, '[skip actions]')" # ⛔ 防止循环触发
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # 必须完整历史，才能获取 git log 时间
+          fetch-depth: 0
 
+      # ✅ Python 用于更新时间戳
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -40,16 +42,24 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git diff --cached --quiet || git commit -m "chore: update timestamps [skip ci]"
+          git diff --cached --quiet || git commit -m "chore: update timestamps [skip actions]"
           git push
 
-      - name: Install Rust and mdBook
+      # ✅ Rust + 缓存，加快 mdBook 构建
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Cargo registry
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+
+      - name: Install mdBook and plugins
         run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-          source "$HOME/.cargo/env"
-          rustup update
-          cargo install mdbook
-          cargo install mdbook-katex
+          cargo install mdbook mdbook-katex --locked || true
 
       - name: Setup Pages
         id: pages
@@ -64,6 +74,7 @@ jobs:
           path: ./book
 
   deploy:
+    if: "!contains(github.event.head_commit.message, '[skip actions]')" # ⛔ 防止循环触发
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -73,3 +84,81 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+
+
+# name: Deploy mdBook site to Pages
+
+# on: 
+#   push: 
+#     branches: ["main"]   # 监听 main 分支
+#     paths:
+#       - "**.md"          # 只有 Markdown 文件变动时才触发
+#       - "insert_timestamp.py"
+#       - "src/**"
+#   workflow_dispatch:
+
+# permissions:
+#   contents: write   # ⚠️ 必须是 write 才能 commit & push
+#   pages: write
+#   id-token: write
+
+# concurrency:
+#   group: "pages"
+#   cancel-in-progress: false
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0   # 必须完整历史，才能获取 git log 时间
+
+#       - name: Set up Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: '3.x'
+
+#       - name: Insert timestamps into markdown files
+#         run: python insert_timestamp.py
+
+#       - name: Commit updated timestamps
+#         run: |
+#           git config --global user.name "github-actions[bot]"
+#           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+#           git add .
+#           git diff --cached --quiet || git commit -m "chore: update timestamps [skip ci]"
+#           git push
+
+#       - name: Install Rust and mdBook
+#         run: |
+#           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+#           source "$HOME/.cargo/env"
+#           rustup update
+#           cargo install mdbook
+#           cargo install mdbook-katex
+
+#       - name: Setup Pages
+#         id: pages
+#         uses: actions/configure-pages@v5
+
+#       - name: Build with mdBook
+#         run: mdbook build
+
+#       - name: Upload artifact
+#         uses: actions/upload-pages-artifact@v3
+#         with:
+#           path: ./book
+
+#   deploy:
+#     environment:
+#       name: github-pages
+#       url: ${{ steps.deployment.outputs.page_url }}
+#     runs-on: ubuntu-latest
+#     needs: build
+#     steps:
+#       - name: Deploy to GitHub Pages
+#         id: deployment
+#         uses: actions/deploy-pages@v4
