@@ -29,7 +29,7 @@ def get_times(filepath):
 def insert_time_block(content, create_time, modify_time):
     block = f"""{TIME_MARKER}
 > 📄 创建时间：{create_time}  
-> 🛠️ 修改时间：{modify_time}
+P25-08-05 04:18:44
 
 """
     return block + content
@@ -66,7 +66,7 @@ if __name__ == '__main__':
 ```markdown
 <!-- timestamp inserted -->
 > 📄 创建时间：2025-07-31 02:45:12  
-> 🛠️ 修改时间：2025-07-31 15:27:55
+P25-08-05 04:18:44
 
 # 第一章：序言
 

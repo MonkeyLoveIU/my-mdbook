@@ -1,3 +1,7 @@
+<!-- timestamp inserted -->
+> 📄 创建时间：2025-08-05 03:36:09  
+> 🛠️ 修改时间：2025-08-05 03:36:09
+
 你写的这个 `CustomKNN` 类结构清晰，但核心问题是：
 
 > `KNeighborsClassifier(metric=...)` 中的 `metric` **不支持你那种带“权重”返回值的写法**。
